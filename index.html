@@ -6,31 +6,22 @@
 
 <title>PERKRAHJE.com | Professional IT Support & Web Solutions</title>
 
-<meta name="description" content="PERKRAHJE.com ofron IT Support profesional, rrjete, Cloud, Cyber Security, Google Services dhe zhvillim webfaqe WordPress. 24/7 Support.">
-<meta name="keywords" content="IT Support, WordPress, Google Workspace, Cyber Security, Network, Cloud, IT Service Germany">
+<meta name="description" content="Professional IT Support, Network, Cloud, Cyber Security, Google Services and WordPress development. 24/7 Support available.">
+<meta name="keywords" content="IT Support Germany, WordPress, Google Workspace, Cyber Security, Network, Cloud Services">
 <meta name="author" content="PERKRAHJE.com">
 
-<!-- Open Graph -->
 <meta property="og:title" content="PERKRAHJE.com | Professional IT Support">
 <meta property="og:description" content="Secure and efficient IT solutions for your business. 24/7 Support available.">
 <meta property="og:type" content="website">
 
-<!-- Schema Markup -->
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "ITService",
-  "name": "PERKRAHJE.com",
-  "url": "https://perkrahje.com",
-  "email": "info@perkrahje.com",
-  "areaServed": "Germany",
-  "availableChannel": {
-    "@type": "ServiceChannel",
-    "serviceLocation": {
-      "@type": "Place",
-      "name": "Germany"
-    }
-  }
+ "@context":"https://schema.org",
+ "@type":"ITService",
+ "name":"PERKRAHJE.com",
+ "url":"https://perkrahje.com",
+ "email":"info@perkrahje.com",
+ "areaServed":"Germany"
 }
 </script>
 
@@ -178,15 +169,9 @@ text-decoration:none;
 box-shadow:0 4px 12px rgba(0,0,0,0.2);
 }
 
-.whatsapp:hover{
-background:#1ebe5d;
-}
+.whatsapp:hover{background:#1ebe5d;}
 
 a{color:var(--accent);}
-
-@media(max-width:768px){
-.hero h1{font-size:1.8rem;}
-}
 </style>
 </head>
 
@@ -212,6 +197,7 @@ a{color:var(--accent);}
 
 <section class="section">
 <h2 id="servicesTitle"></h2>
+
 <div class="services">
 <div class="card"><h3 id="s1t"></h3><p id="s1d"></p></div>
 <div class="card"><h3 id="s2t"></h3><p id="s2d"></p></div>
@@ -241,24 +227,60 @@ Ose shkruaj në: <a href="mailto:info@perkrahje.com">info@perkrahje.com</a>
 © 2026 PERKRAHJE.com | Professional IT Support
 </footer>
 
-<!-- WhatsApp Floating Button -->
-<a class="whatsapp" href="https://wa.me/4915566440167" target="_blank">
-WhatsApp
-</a>
+<a class="whatsapp" href="https://wa.me/4915566440167" target="_blank">WhatsApp</a>
 
 <script>
 const translations={
-sq:{heroTitle:"Mbështetje Profesionale IT",heroText:"Zgjidhje të sigurta dhe efikase për biznesin tuaj.",servicesTitle:"Shërbimet Tona",contactTitle:"Kontakt",sendBtn:"Dërgo Mesazhin",name:"Emri",email:"Email",message:"Mesazhi"},
-en:{heroTitle:"Professional IT Support",heroText:"Secure and efficient solutions for your business.",servicesTitle:"Our Services",contactTitle:"Contact",sendBtn:"Send Message",name:"Name",email:"Email",message:"Message"},
-de:{heroTitle:"Professioneller IT Support",heroText:"Sichere und effiziente Lösungen für Ihr Unternehmen.",servicesTitle:"Unsere Leistungen",contactTitle:"Kontakt",sendBtn:"Nachricht senden",name:"Name",email:"E-Mail",message:"Nachricht"}
+sq:{
+heroTitle:"Mbështetje Profesionale IT",
+heroText:"Zgjidhje të sigurta dhe efikase për biznesin tuaj.",
+servicesTitle:"Shërbimet Tona",
+contactTitle:"Kontakt",
+sendBtn:"Dërgo Mesazhin",
+name:"Emri", email:"Email", message:"Mesazhi",
+s1t:"IT Helpdesk", s1d:"Mbështetje teknike dhe zgjidhje problemesh hardware/software.",
+s2t:"Network & Infrastrukturë", s2d:"Konfigurim rrjeti, firewall, server dhe WiFi.",
+s3t:"Cloud & Microsoft 365", s3d:"Menaxhim email, backup dhe migrim cloud.",
+s4t:"Cyber Security", s4d:"Siguri e të dhënave dhe mbrojtje nga sulmet.",
+s5t:"Google Services", s5d:"Google Workspace, Analytics, Ads dhe SEO.",
+s6t:"Webfaqe & WordPress", s6d:"Zhvillim webfaqe profesionale dhe mirëmbajtje."
+},
+en:{
+heroTitle:"Professional IT Support",
+heroText:"Secure and efficient solutions for your business.",
+servicesTitle:"Our Services",
+contactTitle:"Contact",
+sendBtn:"Send Message",
+name:"Name", email:"Email", message:"Message",
+s1t:"IT Helpdesk", s1d:"Technical support and hardware/software troubleshooting.",
+s2t:"Network & Infrastructure", s2d:"Professional network, firewall, server and WiFi setup.",
+s3t:"Cloud & Microsoft 365", s3d:"Email management, backup and cloud migration.",
+s4t:"Cyber Security", s4d:"Data protection and cyber threat prevention.",
+s5t:"Google Services", s5d:"Google Workspace, Analytics, Ads and SEO.",
+s6t:"Websites & WordPress", s6d:"Professional website development and maintenance."
+},
+de:{
+heroTitle:"Professioneller IT Support",
+heroText:"Sichere und effiziente Lösungen für Ihr Unternehmen.",
+servicesTitle:"Unsere Leistungen",
+contactTitle:"Kontakt",
+sendBtn:"Nachricht senden",
+name:"Name", email:"E-Mail", message:"Nachricht",
+s1t:"IT Helpdesk", s1d:"Technischer Support und Fehlerbehebung.",
+s2t:"Netzwerk & Infrastruktur", s2d:"Netzwerk-, Firewall- und Server-Konfiguration.",
+s3t:"Cloud & Microsoft 365", s3d:"E-Mail-Verwaltung und Cloud-Migration.",
+s4t:"Cyber Security", s4d:"Datenschutz und Schutz vor Cyberangriffen.",
+s5t:"Google Services", s5d:"Google Workspace, Analytics, Ads und SEO.",
+s6t:"Webseiten & WordPress", s6d:"Professionelle Webseitenentwicklung und Wartung."
+}
 };
 
 function setLang(lang){
-document.getElementById("heroTitle").innerText=translations[lang].heroTitle;
-document.getElementById("heroText").innerText=translations[lang].heroText;
-document.getElementById("servicesTitle").innerText=translations[lang].servicesTitle;
-document.getElementById("contactTitle").innerText=translations[lang].contactTitle;
-document.getElementById("sendBtn").innerText=translations[lang].sendBtn;
+for(const key in translations[lang]){
+if(document.getElementById(key)){
+document.getElementById(key).innerText=translations[lang][key];
+}
+}
 document.getElementById("nameField").placeholder=translations[lang].name;
 document.getElementById("emailField").placeholder=translations[lang].email;
 document.getElementById("messageField").placeholder=translations[lang].message;
