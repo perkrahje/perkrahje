@@ -4,308 +4,255 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PERKRAHJE.com | Professional IT Support & Web Solutions</title>
+<title>PERKRAHJE.com | IT Support 24/7</title>
 
-<meta name="description" content="Professional IT Support, Network, Cloud, Cyber Security, Google Services and WordPress development. 24/7 Support available.">
-<meta name="keywords" content="IT Support Germany, WordPress, Google Workspace, Cyber Security, Network, Cloud Services">
+<meta name="description" content="PERKRAHJE.com – Professional IT Support, Microsoft 365, Google Services, Cyber Security, Web Development and Infrastructure Solutions. 24/7 Technical Support.">
+<meta name="keywords" content="IT Support, Helpdesk, Microsoft 365, Google Workspace, Cyber Security, WordPress, Web Development, Network Support">
 <meta name="author" content="PERKRAHJE.com">
 
+<!-- Open Graph -->
 <meta property="og:title" content="PERKRAHJE.com | Professional IT Support">
-<meta property="og:description" content="Secure and efficient IT solutions for your business. 24/7 Support available.">
+<meta property="og:description" content="Reliable 24/7 IT Support, Cloud, Security & Web Solutions.">
 <meta property="og:type" content="website">
 
+<!-- Schema Markup -->
 <script type="application/ld+json">
 {
- "@context":"https://schema.org",
- "@type":"ITService",
- "name":"PERKRAHJE.com",
- "url":"https://perkrahje.com",
- "email":"info@perkrahje.com",
- "areaServed":"Germany"
+  "@context": "https://schema.org",
+  "@type": "ITService",
+  "name": "PERKRAHJE.com",
+  "url": "https://perkrahje.com",
+  "email": "info@perkrahje.com",
+  "areaServed": "Europe",
+  "availableLanguage": ["Albanian","English","German"],
+  "serviceType": ["IT Support","Microsoft 365","Google Workspace","Cyber Security","Web Development"]
 }
 </script>
 
 <style>
-:root{
---bg:#0f172a;
---card:#1e293b;
---primary:#3b82f6;
---text:#e2e8f0;
---muted:#94a3b8;
---success:#22c55e;
+
+:root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --primary: #00d4ff;
+    --text: #ffffff;
+    --muted: #9aa4b2;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
-
-body{
-font-family:"Segoe UI",Arial,sans-serif;
-background:var(--bg);
-color:var(--text);
-line-height:1.6;
+body {
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
 }
 
-header{
-background:#0b1220;
-padding:20px 5%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-border-bottom:1px solid #1f2937;
+header {
+    text-align:center;
+    padding:80px 20px;
+    background: linear-gradient(135deg,#0d1117,#0a192f);
 }
 
-.logo{font-size:1.5rem;font-weight:600;}
-
-.badge{
-background:var(--success);
-padding:6px 12px;
-border-radius:20px;
-font-size:0.8rem;
-margin-left:15px;
-color:#000;
-font-weight:600;
+header h1 {
+    font-size:3em;
+    color: var(--primary);
+    margin:0;
 }
 
-nav button{
-background:none;
-border:1px solid var(--primary);
-color:var(--primary);
-padding:6px 12px;
-margin-left:8px;
-cursor:pointer;
-border-radius:4px;
+.badge {
+    display:inline-block;
+    margin-top:20px;
+    padding:10px 20px;
+    background: var(--primary);
+    color:#000;
+    font-weight:bold;
+    border-radius:30px;
 }
 
-nav button:hover{
-background:var(--primary);
-color:#fff;
+.language-switch {
+    position:absolute;
+    top:20px;
+    right:20px;
 }
 
-.hero{
-background:linear-gradient(rgba(15,23,42,0.9),rgba(15,23,42,0.9)),
-url("https://images.unsplash.com/photo-1519389950473-47ba0277781c");
-background-size:cover;
-background-position:center;
-text-align:center;
-padding:110px 20px;
+.language-switch button {
+    background:transparent;
+    border:1px solid var(--primary);
+    color:var(--primary);
+    padding:6px 12px;
+    margin-left:5px;
+    cursor:pointer;
 }
 
-.hero h1{font-size:2.5rem;margin-bottom:15px;}
-
-.section{
-padding:70px 5%;
-max-width:1200px;
-margin:auto;
+section {
+    max-width:1100px;
+    margin:auto;
+    padding:70px 20px;
 }
 
-.section h2{
-text-align:center;
-margin-bottom:40px;
-color:var(--primary);
+h2 {
+    color:var(--primary);
+    margin-bottom:30px;
+    text-align:center;
 }
 
-.services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+.services {
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
 }
 
-.card{
-background:var(--card);
-padding:25px;
-border-radius:8px;
-border:1px solid #1f2937;
-transition:0.3s;
+.card {
+    background: var(--card);
+    padding:25px;
+    border-radius:10px;
+    border:1px solid #1f2937;
+    transition:0.3s;
 }
 
-.card:hover{
-transform:translateY(-5px);
-border-color:var(--primary);
+.card:hover {
+    border-color: var(--primary);
+    transform: translateY(-5px);
 }
 
-.card h3{
-margin-bottom:15px;
-color:var(--primary);
+.card h3 {
+    color: var(--primary);
 }
 
-.card p{
-color:var(--muted);
+form {
+    display:flex;
+    flex-direction:column;
+    max-width:600px;
+    margin:auto;
 }
 
-.contact{
-background:var(--card);
-padding:40px;
-border-radius:8px;
-border:1px solid #1f2937;
-max-width:600px;
-margin:auto;
+input, textarea {
+    margin-bottom:15px;
+    padding:12px;
+    background:#0f141c;
+    border:1px solid #2a2f3a;
+    color:#fff;
 }
 
-.contact input,.contact textarea{
-width:100%;
-padding:12px;
-margin-bottom:15px;
-background:#0f172a;
-border:1px solid #334155;
-border-radius:4px;
-color:var(--text);
+button.submit-btn {
+    background:var(--primary);
+    color:#000;
+    padding:12px;
+    border:none;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.contact button{
-background:var(--primary);
-color:white;
-border:none;
-padding:12px;
-width:100%;
-cursor:pointer;
-border-radius:4px;
-font-weight:600;
+footer {
+    text-align:center;
+    padding:40px;
+    background:#0a192f;
+    color:var(--muted);
 }
 
-.contact button:hover{
-background:#2563eb;
+.whatsapp {
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    padding:15px 18px;
+    border-radius:50px;
+    font-weight:bold;
+    text-decoration:none;
 }
 
-footer{
-background:#0b1220;
-text-align:center;
-padding:25px;
-margin-top:50px;
-border-top:1px solid #1f2937;
-color:var(--muted);
-}
-
-.whatsapp{
-position:fixed;
-bottom:25px;
-right:25px;
-background:#25D366;
-color:white;
-padding:15px 18px;
-border-radius:50px;
-font-weight:600;
-text-decoration:none;
-box-shadow:0 4px 12px rgba(0,0,0,0.4);
-}
-
-.whatsapp:hover{
-background:#1ebe5d;
-}
-
-a{color:var(--primary);}
 </style>
 </head>
 
 <body>
 
-<header>
-<div>
-<span class="logo">PERKRAHJE.com</span>
-<span class="badge">24/7 Support</span>
+<div class="language-switch">
+    <button onclick="setLang('sq')">SQ</button>
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('de')">DE</button>
 </div>
 
-<nav>
-<button onclick="setLang('sq')">AL</button>
-<button onclick="setLang('en')">EN</button>
-<button onclick="setLang('de')">DE</button>
-</nav>
+<header>
+    <h1>PERKRAHJE.com</h1>
+    <p id="subtitle">Professional IT Support & Digital Solutions</p>
+    <div class="badge">24/7 SUPPORT</div>
 </header>
 
-<section class="hero">
-<h1 id="heroTitle"></h1>
-<p id="heroText"></p>
-</section>
+<section>
+<h2 id="services-title">Shërbimet Tona</h2>
 
-<section class="section">
-<h2 id="servicesTitle"></h2>
 <div class="services">
-<div class="card"><h3 id="s1t"></h3><p id="s1d"></p></div>
-<div class="card"><h3 id="s2t"></h3><p id="s2d"></p></div>
-<div class="card"><h3 id="s3t"></h3><p id="s3d"></p></div>
-<div class="card"><h3 id="s4t"></h3><p id="s4d"></p></div>
-<div class="card"><h3 id="s5t"></h3><p id="s5d"></p></div>
-<div class="card"><h3 id="s6t"></h3><p id="s6d"></p></div>
+
+<div class="card">
+<h3>IT Helpdesk</h3>
+<p>Mbështetje teknike 24/7, remote dhe onsite, zgjidhje për hardware & software.</p>
+</div>
+
+<div class="card">
+<h3>Microsoft 365</h3>
+<p>Menaxhim email, Teams, SharePoint, migrime dhe siguri cloud.</p>
+</div>
+
+<div class="card">
+<h3>Google Workspace</h3>
+<p>Setup profesional i Gmail, Drive, Admin Console dhe migrime.</p>
+</div>
+
+<div class="card">
+<h3>Cyber Security</h3>
+<p>Firewall, antivirus, backup strategjik dhe mbrojtje nga sulmet.</p>
+</div>
+
+<div class="card">
+<h3>Network & Infrastructure</h3>
+<p>Konfigurim rrjetesh, serverë, WiFi, router dhe monitorim sistemesh.</p>
+</div>
+
+<div class="card">
+<h3>Web Development</h3>
+<p>Zhvillim website profesionale, WordPress, optimizim SEO dhe mirëmbajtje.</p>
+</div>
+
 </div>
 </section>
 
-<section class="section">
-<h2 id="contactTitle"></h2>
-<div class="contact">
+<section>
+<h2 id="contact-title">Kontakt</h2>
+
 <form action="https://formspree.io/f/xzdavnrg" method="POST">
-<input type="text" id="nameField" name="name" required>
-<input type="email" id="emailField" name="email" required>
-<textarea id="messageField" name="message" rows="5" required></textarea>
-<button type="submit" id="sendBtn"></button>
+<input type="text" name="name" placeholder="Emri" required>
+<input type="email" name="email" placeholder="Email" required>
+<textarea name="message" rows="5" placeholder="Mesazhi" required></textarea>
+<button type="submit" class="submit-btn">Dërgo Mesazhin</button>
 </form>
-<p style="margin-top:15px;text-align:center;">
-Ose shkruaj në: <a href="mailto:info@perkrahje.com">info@perkrahje.com</a>
+
+<p style="text-align:center;margin-top:20px;">
+Email: <a href="mailto:info@perkrahje.com" style="color:#00d4ff;">info@perkrahje.com</a>
 </p>
-</div>
+
 </section>
 
 <footer>
-© 2026 PERKRAHJE.com | Professional IT Support
+© 2026 PERKRAHJE.com | Professional IT Services
 </footer>
 
 <a class="whatsapp" href="https://wa.me/4915566440167" target="_blank">WhatsApp</a>
 
 <script>
-const translations={
-sq:{
-heroTitle:"Mbështetje Profesionale IT",
-heroText:"Zgjidhje të sigurta dhe efikase për biznesin tuaj.",
-servicesTitle:"Shërbimet Tona",
-contactTitle:"Kontakt",
-sendBtn:"Dërgo Mesazhin",
-name:"Emri", email:"Email", message:"Mesazhi",
-s1t:"IT Helpdesk", s1d:"Mbështetje teknike dhe zgjidhje problemesh hardware/software.",
-s2t:"Network & Infrastrukturë", s2d:"Konfigurim rrjeti, firewall, server dhe WiFi.",
-s3t:"Cloud & Microsoft 365", s3d:"Menaxhim email, backup dhe migrim cloud.",
-s4t:"Cyber Security", s4d:"Siguri e të dhënave dhe mbrojtje nga sulmet.",
-s5t:"Google Services", s5d:"Google Workspace, Analytics, Ads dhe SEO.",
-s6t:"Webfaqe & WordPress", s6d:"Zhvillim webfaqe profesionale dhe mirëmbajtje."
-},
-en:{
-heroTitle:"Professional IT Support",
-heroText:"Secure and efficient solutions for your business.",
-servicesTitle:"Our Services",
-contactTitle:"Contact",
-sendBtn:"Send Message",
-name:"Name", email:"Email", message:"Message",
-s1t:"IT Helpdesk", s1d:"Technical support and troubleshooting.",
-s2t:"Network & Infrastructure", s2d:"Professional network and server configuration.",
-s3t:"Cloud & Microsoft 365", s3d:"Email management and cloud migration.",
-s4t:"Cyber Security", s4d:"Data protection and cyber threat prevention.",
-s5t:"Google Services", s5d:"Google Workspace, Analytics, Ads and SEO.",
-s6t:"Websites & WordPress", s6d:"Professional website development and maintenance."
-},
-de:{
-heroTitle:"Professioneller IT Support",
-heroText:"Sichere und effiziente Lösungen für Ihr Unternehmen.",
-servicesTitle:"Unsere Leistungen",
-contactTitle:"Kontakt",
-sendBtn:"Nachricht senden",
-name:"Name", email:"E-Mail", message:"Nachricht",
-s1t:"IT Helpdesk", s1d:"Technischer Support und Fehlerbehebung.",
-s2t:"Netzwerk & Infrastruktur", s2d:"Netzwerk- und Server-Konfiguration.",
-s3t:"Cloud & Microsoft 365", s3d:"E-Mail-Verwaltung und Cloud-Migration.",
-s4t:"Cyber Security", s4d:"Datenschutz und Schutz vor Cyberangriffen.",
-s5t:"Google Services", s5d:"Google Workspace, Analytics, Ads und SEO.",
-s6t:"Webseiten & WordPress", s6d:"Professionelle Webseitenentwicklung und Wartung."
+function setLang(lang) {
+    if(lang === 'en'){
+        document.getElementById('services-title').innerText = "Our Services";
+        document.getElementById('contact-title').innerText = "Contact";
+    }
+    if(lang === 'de'){
+        document.getElementById('services-title').innerText = "Unsere Dienstleistungen";
+        document.getElementById('contact-title').innerText = "Kontakt";
+    }
+    if(lang === 'sq'){
+        document.getElementById('services-title').innerText = "Shërbimet Tona";
+        document.getElementById('contact-title').innerText = "Kontakt";
+    }
 }
-};
-
-function setLang(lang){
-for(const key in translations[lang]){
-if(document.getElementById(key)){
-document.getElementById(key).innerText=translations[lang][key];
-}
-}
-document.getElementById("nameField").placeholder=translations[lang].name;
-document.getElementById("emailField").placeholder=translations[lang].email;
-document.getElementById("messageField").placeholder=translations[lang].message;
-}
-
-setLang("sq");
 </script>
 
 </body>
