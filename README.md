@@ -52,8 +52,8 @@ Whether you're a startup needing your first server or an established company loo
 | | |
 |---|---|
 | 📧 **Email** | info@perkrahje.com |
-| 📞 **Phone** | +383 XX XXX XXX |
-| 🕐 **Hours** | Mon–Fri: 8AM – 6PM · Emergency: 24/7 |
+| 📞 **Phone** | +49 155 6644 0167 |
+| 🕐 **Hours** | Mon–Fri: 08:00 - 18:00 · Emergency: 24/7 |
 | 📍 **Location** | Serving businesses locally & remotely |
 
 ---
