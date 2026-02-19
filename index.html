@@ -3,289 +3,216 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>PERKRAHJE.com | Enterprise IT Support 24/7</title>
 
-<meta name="description" content="Enterprise-grade IT Support, Microsoft 365, Google Workspace, Cyber Security, Web Development & Infrastructure Solutions. 24/7 Professional Technical Support.">
-<meta name="keywords" content="IT Support, Enterprise IT, Microsoft 365, Google Workspace, Cyber Security, WordPress, Network Infrastructure">
+<meta name="description" content="Enterprise IT Support, Microsoft 365, Google Workspace, Cyber Security, Web Development & Infrastructure Solutions. 24/7 Professional Support.">
+<meta name="keywords" content="IT Support, Microsoft 365, Google Workspace, Cyber Security, WordPress, Enterprise IT">
 <meta name="author" content="PERKRAHJE.com">
 
-<link rel="preconnect" href="https://formspree.io">
+<!-- FAQ Schema for SEO -->
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"FAQPage",
+"mainEntity":[
+{
+"@type":"Question",
+"name":"Do you provide 24/7 IT Support?",
+"acceptedAnswer":{"@type":"Answer","text":"Yes. We provide 24/7 enterprise IT support and monitoring."}
+},
+{
+"@type":"Question",
+"name":"Do you support Microsoft and Google services?",
+"acceptedAnswer":{"@type":"Answer","text":"We manage Microsoft 365 and Google Workspace environments professionally."}
+}
+]
+}
+</script>
 
 <style>
 
-/* ===== Root Theme ===== */
-:root {
-    --bg:#071423;
-    --bg2:#0d2238;
-    --card:#102a44;
-    --primary:#1ea7ff;
-    --accent:#00d4ff;
-    --text:#ffffff;
-    --muted:#9fb3c8;
+/* ===== Theme ===== */
+:root{
+--bg:#071423;
+--card:#102a44;
+--accent:#00d4ff;
+--primary:#1ea7ff;
+--text:#ffffff;
+--muted:#9fb3c8;
 }
 
-/* ===== Global ===== */
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    background:linear-gradient(160deg,var(--bg),var(--bg2));
-    color:var(--text);
-    overflow-x:hidden;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+background:linear-gradient(160deg,#071423,#0c1e33);
+color:var(--text);
 }
 
-/* ===== Animated Background ===== */
-body::before{
-    content:"";
-    position:fixed;
-    top:0;left:0;
-    width:200%;height:200%;
-    background:radial-gradient(circle at 20% 20%,rgba(0,212,255,0.08),transparent 40%),
-               radial-gradient(circle at 80% 80%,rgba(30,167,255,0.08),transparent 40%);
-    animation:moveBg 20s linear infinite;
-    z-index:-1;
-}
-@keyframes moveBg{
-    0%{transform:translate(0,0)}
-    50%{transform:translate(-10%,-10%)}
-    100%{transform:translate(0,0)}
-}
-
-/* ===== Sticky Navbar ===== */
 nav{
-    position:sticky;
-    top:0;
-    background:rgba(7,20,35,0.95);
-    backdrop-filter:blur(10px);
-    padding:15px 40px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    z-index:1000;
-    border-bottom:1px solid #123456;
+position:sticky;
+top:0;
+background:#06101b;
+padding:15px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
 }
 
-nav .logo{
-    font-weight:bold;
-    font-size:20px;
-    color:var(--accent);
+nav .logo{color:var(--accent);font-weight:bold}
+
+nav ul{display:flex;gap:20px;list-style:none}
+
+nav a{color:var(--muted);text-decoration:none;font-size:14px}
+
+.lang-switch button{
+background:none;
+border:1px solid var(--accent);
+color:var(--accent);
+padding:4px 10px;
+margin-left:5px;
+cursor:pointer;
 }
 
-nav ul{
-    list-style:none;
-    display:flex;
-    gap:25px;
+section{max-width:1100px;margin:auto;padding:80px 20px}
+
+h1,h2{text-align:center;margin-bottom:20px}
+
+h1{color:var(--accent);font-size:3em}
+
+.hero p{text-align:center;color:var(--muted);margin-bottom:30px}
+
+.cta{
+display:inline-block;
+background:var(--accent);
+color:#00121f;
+padding:12px 25px;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
 }
 
-nav a{
-    color:var(--muted);
-    text-decoration:none;
-    font-size:14px;
-}
-
-nav a:hover{color:var(--accent)}
-
-/* ===== Hero Section ===== */
-.hero{
-    text-align:center;
-    padding:120px 20px 100px;
-    max-width:900px;
-    margin:auto;
-}
-
-.hero h1{
-    font-size:3.2em;
-    color:var(--accent);
-    margin-bottom:20px;
-}
-
-.hero p{
-    color:var(--muted);
-    font-size:1.1em;
-    margin-bottom:30px;
-}
-
-.cta-btn{
-    display:inline-block;
-    padding:14px 30px;
-    background:var(--accent);
-    color:#00121f;
-    font-weight:bold;
-    border-radius:30px;
-    text-decoration:none;
-    transition:0.3s;
-}
-.cta-btn:hover{
-    background:var(--primary);
-}
-
-/* ===== Sections ===== */
-section{
-    max-width:1100px;
-    margin:auto;
-    padding:80px 20px;
-}
-
-h2{
-    text-align:center;
-    color:var(--accent);
-    margin-bottom:50px;
-}
-
-/* ===== Services ===== */
-.services{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
-}
+.services,.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
 
 .card{
-    background:var(--card);
-    padding:30px;
-    border-radius:12px;
-    border:1px solid #163a5a;
-    transition:0.3s;
+background:var(--card);
+padding:25px;
+border-radius:12px;
+border:1px solid #163a5a;
+transition:0.3s;
 }
 
-.card:hover{
-    border-color:var(--accent);
-    transform:translateY(-6px);
+.card:hover{border-color:var(--accent);transform:translateY(-5px)}
+
+.price{font-size:28px;color:var(--accent);margin:15px 0}
+
+.testimonials{text-align:center}
+
+.testimonial-box{
+max-width:600px;
+margin:auto;
+background:var(--card);
+padding:30px;
+border-radius:10px;
 }
 
-.card svg{
-    width:40px;
-    height:40px;
-    fill:var(--accent);
-    margin-bottom:15px;
-}
-
-.card h3{
-    margin-bottom:10px;
-    color:var(--primary);
-}
-
-.card p{color:var(--muted);font-size:14px}
-
-/* ===== Contact ===== */
-form{
-    display:flex;
-    flex-direction:column;
-    max-width:600px;
-    margin:auto;
-}
-
-input,textarea{
-    margin-bottom:15px;
-    padding:12px;
-    background:#0c1e31;
-    border:1px solid #1a3f5f;
-    color:#fff;
-}
-
-button{
-    background:var(--accent);
-    color:#00121f;
-    padding:12px;
-    border:none;
-    font-weight:bold;
-    cursor:pointer;
-}
+.faq-item{margin-bottom:20px}
 
 footer{
-    text-align:center;
-    padding:40px;
-    background:#06101b;
-    color:var(--muted);
+text-align:center;
+padding:40px;
+background:#06101b;
+color:var(--muted);
 }
 
-/* ===== WhatsApp ===== */
 .whatsapp{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#25D366;
-    color:white;
-    padding:14px 18px;
-    border-radius:50px;
-    text-decoration:none;
-    font-weight:bold;
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:14px 18px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
 }
 
 </style>
 </head>
-
 <body>
 
 <nav>
-    <div class="logo">PERKRAHJE.com</div>
-    <ul>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
+<div class="logo">PERKRAHJE.com</div>
+<ul>
+<li><a href="#services">Services</a></li>
+<li><a href="#pricing">Pricing</a></li>
+<li><a href="#faq">FAQ</a></li>
+</ul>
+<div class="lang-switch">
+<button onclick="setLang('sq')">SQ</button>
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('de')">DE</button>
+</div>
 </nav>
 
 <section class="hero">
-    <h1>Enterprise IT Support 24/7</h1>
-    <p>Reliable infrastructure, cloud solutions, cyber security and professional web development for modern businesses.</p>
-    <a href="#contact" class="cta-btn">Request Consultation</a>
+<h1 data-i18n="heroTitle">Enterprise IT Support 24/7</h1>
+<p data-i18n="heroText">Reliable infrastructure, cloud solutions and cyber security for modern businesses.</p>
+<div style="text-align:center;">
+<a href="#pricing" class="cta" data-i18n="ctaBtn">View Pricing</a>
+</div>
 </section>
 
 <section id="services">
-<h2>Our Services</h2>
-
+<h2 data-i18n="servicesTitle">Our Services</h2>
 <div class="services">
-
-<div class="card">
-<svg viewBox="0 0 24 24"><path d="M12 2L2 7v6c0 5 3.8 9.7 10 9 6.2.7 10-4 10-9V7L12 2z"/></svg>
-<h3>Cyber Security</h3>
-<p>Enterprise firewall, endpoint protection and strategic backup systems.</p>
-</div>
-
-<div class="card">
-<svg viewBox="0 0 24 24"><path d="M4 4h16v4H4zm0 6h16v10H4z"/></svg>
-<h3>Microsoft 365</h3>
-<p>Professional setup, migration and administration of Microsoft environments.</p>
-</div>
-
-<div class="card">
-<svg viewBox="0 0 24 24"><path d="M3 12h18M12 3v18"/></svg>
-<h3>Google Workspace</h3>
-<p>Secure Google business configuration, migration and optimization.</p>
-</div>
-
-<div class="card">
-<svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-<h3>Network Infrastructure</h3>
-<p>Structured network deployment, monitoring and performance management.</p>
-</div>
-
-<div class="card">
-<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg>
-<h3>Web Development</h3>
-<p>High-performance WordPress and custom business websites optimized for SEO.</p>
-</div>
-
-<div class="card">
-<svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/></svg>
-<h3>IT Helpdesk</h3>
-<p>24/7 remote and onsite technical assistance for business continuity.</p>
-</div>
-
+<div class="card"><h3>Microsoft 365</h3><p>Enterprise cloud management.</p></div>
+<div class="card"><h3>Google Workspace</h3><p>Professional Google environment setup.</p></div>
+<div class="card"><h3>Cyber Security</h3><p>Firewall, monitoring & backup.</p></div>
+<div class="card"><h3>Web Development</h3><p>WordPress & SEO optimized websites.</p></div>
 </div>
 </section>
 
-<section id="contact">
-<h2>Contact</h2>
+<section id="pricing">
+<h2 data-i18n="pricingTitle">Pricing Packages</h2>
+<div class="pricing">
+<div class="card">
+<h3>Basic</h3>
+<div class="price">€99/mo</div>
+<p>Helpdesk & Monitoring</p>
+</div>
+<div class="card">
+<h3>Business</h3>
+<div class="price">€249/mo</div>
+<p>Cloud + Security + Support</p>
+</div>
+<div class="card">
+<h3>Enterprise</h3>
+<div class="price">Custom</div>
+<p>Full Infrastructure & 24/7 SLA</p>
+</div>
+</div>
+</section>
 
-<form action="https://formspree.io/f/xzdavnrg" method="POST">
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Your Email" required>
-<textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-<button type="submit">Send Message</button>
-</form>
+<section class="testimonials">
+<h2 data-i18n="testimonialsTitle">Client Testimonials</h2>
+<div class="testimonial-box" id="testimonial">
+"Excellent IT partner for our business infrastructure."
+</div>
+</section>
 
-<p style="text-align:center;margin-top:20px;">
-Email: <a href="mailto:info@perkrahje.com" style="color:#1ea7ff;">info@perkrahje.com</a>
-</p>
+<section id="faq">
+<h2>FAQ</h2>
+<div class="faq-item">
+<strong>Do you offer 24/7 support?</strong>
+<p>Yes, continuous enterprise monitoring and response.</p>
+</div>
+<div class="faq-item">
+<strong>Do you manage Microsoft & Google services?</strong>
+<p>Yes, full cloud lifecycle management.</p>
+</div>
 </section>
 
 <footer>
@@ -293,6 +220,57 @@ Email: <a href="mailto:info@perkrahje.com" style="color:#1ea7ff;">info@perkrahje
 </footer>
 
 <a class="whatsapp" href="https://wa.me/4915566440167" target="_blank">WhatsApp</a>
+
+<script>
+
+/* ===== Language Switch ===== */
+const translations={
+en:{
+heroTitle:"Enterprise IT Support 24/7",
+heroText:"Reliable infrastructure, cloud solutions and cyber security for modern businesses.",
+ctaBtn:"View Pricing",
+servicesTitle:"Our Services",
+pricingTitle:"Pricing Packages",
+testimonialsTitle:"Client Testimonials"
+},
+de:{
+heroTitle:"Enterprise IT Support 24/7",
+heroText:"Zuverlässige Infrastruktur, Cloud-Lösungen und Cybersicherheit für moderne Unternehmen.",
+ctaBtn:"Preise ansehen",
+servicesTitle:"Unsere Dienstleistungen",
+pricingTitle:"Preispakete",
+testimonialsTitle:"Kundenreferenzen"
+},
+sq:{
+heroTitle:"Mbështetje IT 24/7",
+heroText:"Infrastrukturë e sigurt, cloud dhe siguri kibernetike për biznese moderne.",
+ctaBtn:"Shiko Çmimet",
+servicesTitle:"Shërbimet Tona",
+pricingTitle:"Paketa Çmimesh",
+testimonialsTitle:"Klientët Tanë"
+}
+};
+
+function setLang(lang){
+document.querySelectorAll("[data-i18n]").forEach(el=>{
+el.innerText=translations[lang][el.dataset.i18n];
+});
+document.documentElement.lang=lang;
+}
+
+/* ===== Testimonials Slider ===== */
+const testimonials=[
+"Excellent IT partner for our business infrastructure.",
+"Professional Microsoft 365 migration and security setup.",
+"Reliable 24/7 support and proactive monitoring."
+];
+let index=0;
+setInterval(()=>{
+index=(index+1)%testimonials.length;
+document.getElementById("testimonial").innerText=testimonials[index];
+},4000);
+
+</script>
 
 </body>
 </html>
