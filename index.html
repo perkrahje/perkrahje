@@ -3,13 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PERKRAHJE.com</title>
-    <link rel="stylesheet" href="style.css">
+    <title>PERKRAHJE.com | IT Support</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #0a1f44;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+
+        section {
+            padding: 50px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #0a1f44;
+            margin-bottom: 20px;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #0a1f44;
+        }
+
+        footer {
+            background-color: #0a1f44;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        a {
+            color: #4da3ff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-email {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>PERKRAHJE</h1>
-        <p>Shkruaj në: <a href="mailto:valon@perkrahje.com">valon@perkrahje.com</a></p>
+
+<header>
+    <h1>PERKRAHJE.com</h1>
+    <p>Professional IT Support & Technical Solutions</p>
+</header>
+
+<section>
+    <h2>Rreth Nesh</h2>
+    <p>
+        PERKRAHJE.com ofron shërbime profesionale të IT Support për biznese dhe individë.
+        Fokusimi ynë është stabiliteti i sistemeve, siguria e të dhënave dhe optimizimi i infrastrukturës teknologjike.
+    </p>
+</section>
+
+<section>
+    <h2>Shërbimet Tona</h2>
+    <div class="services">
+
+        <div class="card">
+            <h3>IT Helpdesk</h3>
+            <p>Mbështetje teknike për përdoruesit, zgjidhje problemesh software dhe hardware, asistencë remote dhe onsite.</p>
+        </div>
+
+        <div class="card">
+            <h3>Network & Infrastructure</h3>
+            <p>Konfigurim dhe mirëmbajtje rrjetesh, firewall, router, switch, WiFi dhe serverë.</p>
+        </div>
+
+        <div class="card">
+            <h3>Microsoft 365 & Cloud</h3>
+            <p>Menaxhim i email-eve, SharePoint, Teams, backup cloud dhe migrime në cloud.</p>
+        </div>
+
+        <div class="card">
+            <h3>Cyber Security</h3>
+            <p>Implementim i masave të sigurisë, antivirus, backup strategjik dhe mbrojtje nga sulmet kibernetike.</p>
+        </div>
+
+        <div class="card">
+            <h3>Website & WordPress</h3>
+            <p>Zhvillim dhe mirëmbajtje website, WordPress, hosting dhe optimizim performance.</p>
+        </div>
+
+        <div class="card">
+            <h3>IT Consulting</h3>
+            <p>Planifikim strategjik IT, optimizim kostosh, auditim sistemesh dhe transformim digjital.</p>
+        </div>
+
     </div>
+</section>
+
+<section>
+    <h2>Pse të Zgjidhni Ne?</h2>
+    <p>
+        ✔ Qasje profesionale dhe e strukturuar  
+        ✔ Zgjidhje të shpejta dhe efikase  
+        ✔ Fokus në siguri dhe stabilitet  
+        ✔ Mbështetje e vazhdueshme  
+    </p>
+</section>
+
+<footer>
+    <h2>Kontakt</h2>
+    <p class="contact-email">
+        Shkruaj në: <a href="mailto:info@perkrahje.com">info@perkrahje.com</a>
+    </p>
+    <p>© 2026 PERKRAHJE.com – Të gjitha të drejtat e rezervuara</p>
+</footer>
+
 </body>
 </html>
