@@ -3,421 +3,226 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Communauté Albanaise Genève – CAGeneve</title>
+  <title>Communauté Albanaise Genève – CAGenève</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --black: #0b0b0b;
-      --white: #f5f3ee;
-      --red: #c1272d;
-      --gold: #c8963c;
-      --grey: #7a7a72;
-      --light: #e8e4db;
+      --black: #0b0b0b; --white: #f5f3ee; --red: #c1272d;
+      --gold: #c8963c; --grey: #6a6a62; --light: #e8e4db;
     }
-
     html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--black); overflow-x: hidden; }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--white);
-      color: var(--black);
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
+    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 3rem;
-      background: rgba(245,243,238,0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding: 1.1rem 3.5rem;
+      background: rgba(245,243,238,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
     }
-
-    .nav-logo {
-      display: flex; align-items: center; gap: 0.75rem; text-decoration: none;
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .nav-shield {
+      width: 32px; height: 38px; background: var(--red);
+      clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
+      display: flex; align-items: center; justify-content: center; font-size: 13px; padding-bottom: 6px;
     }
-    .nav-logo .flag {
-      width: 38px; height: 26px;
-      background: var(--red);
-      position: relative;
-      display: flex; align-items: center; justify-content: center;
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-    .nav-logo .flag::after {
-      content: '🦅';
-      font-size: 14px;
-      filter: grayscale(1) brightness(10);
-    }
-    .nav-logo-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
+    .nav-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; }
     .nav-logo-text span { color: var(--red); }
-
-    .nav-links {
-      display: flex; gap: 2.5rem; list-style: none;
-    }
-    .nav-links a {
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--black);
-      transition: color 0.2s;
-    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: var(--black); transition: color 0.2s; }
     .nav-links a:hover { color: var(--red); }
+    .nav-cta { background: var(--red); color: #fff !important; padding: 0.5rem 1.3rem; letter-spacing: 0.08em; }
+    .nav-cta:hover { background: #9e1e23 !important; }
 
-    .nav-cta {
-      background: var(--red); color: #fff !important;
-      padding: 0.5rem 1.2rem; border-radius: 2px;
+    /* HERO */
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 55% 45%; position: relative; overflow: hidden; }
+    .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 9rem 5rem 5rem 5rem; position: relative; z-index: 2; }
+    .hero-right { background: var(--black); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .hero-right-pattern {
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(45deg, rgba(193,39,45,0.06) 0, rgba(193,39,45,0.06) 1px, transparent 0, transparent 50%);
+      background-size: 30px 30px;
     }
-    .nav-cta:hover { background: #a01e23 !important; color: #fff !important; }
+    .hero-right-overlay { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.7) 100%); }
+    .hero-emblem { position: relative; z-index: 2; text-align: center; color: #fff; padding: 2.5rem; border: 1px solid rgba(255,255,255,0.1); }
+    .eagle-symbol { font-size: 5rem; display: block; margin-bottom: 1rem; opacity: 0.85; }
+    .emblem-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; color: rgba(255,255,255,0.9); }
+    .emblem-sub { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--red); margin-bottom: 1.5rem; }
+    .emblem-divider { width: 40px; height: 1px; background: rgba(255,255,255,0.2); margin: 0 auto 1.5rem; }
+    .emblem-fact { font-size: 0.75rem; color: rgba(255,255,255,0.45); letter-spacing: 0.05em; line-height: 1.8; }
+    .hero-eyebrow { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 2rem; }
+    .hero-line { width: 30px; height: 2px; background: var(--red); }
+    .hero-eyebrow-text { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 4.5vw, 4.8rem); font-weight: 300; line-height: 1.08; margin-bottom: 1.8rem; }
+    .hero-title em { font-style: italic; color: var(--red); display: block; }
+    .hero-desc { font-size: 0.95rem; line-height: 1.8; color: var(--grey); max-width: 460px; margin-bottom: 3rem; }
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { background: var(--red); color: #fff; padding: 0.9rem 2.2rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; display: inline-block; }
+    .btn-primary:hover { background: #9e1e23; }
+    .btn-outline { background: transparent; color: var(--black); padding: 0.9rem 2.2rem; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: 1.5px solid rgba(0,0,0,0.3); transition: all 0.2s; display: inline-block; }
+    .btn-outline:hover { border-color: var(--black); background: var(--black); color: #fff; }
+    .hero-contact-strip { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.08); display: flex; gap: 2.5rem; flex-wrap: wrap; }
+    .strip-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .strip-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grey); }
+    .strip-value { font-size: 0.88rem; font-weight: 500; color: var(--black); }
+    .strip-value a { color: var(--red); text-decoration: none; }
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: grid; grid-template-columns: 1fr 1fr; align-items: center;
-      padding: 8rem 3rem 4rem;
-      position: relative;
-      overflow: hidden;
-    }
+    /* TICKER */
+    .ticker { background: var(--red); color: #fff; padding: 0.6rem 0; overflow: hidden; }
+    .ticker-inner { display: flex; gap: 5rem; animation: ticker 40s linear infinite; width: max-content; }
+    .ticker-item { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; white-space: nowrap; display: flex; align-items: center; gap: 1.5rem; }
+    .ticker-item::before { content: '✦'; opacity: 0.7; font-size: 0.5rem; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    .hero-bg-pattern {
-      position: absolute; top: 0; right: 0;
-      width: 55%; height: 100%;
-      background: var(--black);
-      clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
-      z-index: 0;
-    }
-    .hero-bg-overlay {
-      position: absolute; top: 0; right: 0;
-      width: 55%; height: 100%;
-      background: url('https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?w=900&auto=format&fit=crop') center/cover;
-      opacity: 0.18;
-      clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
-      z-index: 0;
-    }
+    /* SECTION HELPERS */
+    .section-eyebrow { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem; }
+    .eyebrow-line { width: 24px; height: 2px; background: var(--red); flex-shrink: 0; }
+    .eyebrow-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); }
+    .section-title-lg { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.2; }
 
-    .hero-content { position: relative; z-index: 1; padding-right: 4rem; }
-    .hero-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--red);
-      border: 1px solid var(--red);
-      padding: 0.3rem 0.8rem;
-      margin-bottom: 2rem;
-    }
-    .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.6rem, 5vw, 4.5rem);
-      font-weight: 300;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-    }
-    .hero-title em { font-style: italic; color: var(--red); }
-    .hero-subtitle {
-      font-size: 1rem;
-      line-height: 1.7;
-      color: var(--grey);
-      max-width: 440px;
-      margin-bottom: 2.5rem;
-    }
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--red); color: #fff;
-      padding: 0.85rem 2rem;
-      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
-      text-decoration: none; border: none; cursor: pointer;
-      transition: background 0.2s;
-    }
-    .btn-primary:hover { background: #a01e23; }
-    .btn-outline {
-      background: transparent; color: var(--black);
-      padding: 0.85rem 2rem;
-      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
-      text-decoration: none; border: 1.5px solid var(--black);
-      transition: all 0.2s;
-    }
-    .btn-outline:hover { background: var(--black); color: #fff; }
+    /* ABOUT */
+    .about { padding: 8rem 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: center; max-width: 1280px; margin: 0 auto; }
+    .about p { font-size: 0.95rem; line-height: 1.85; color: var(--grey); margin-bottom: 1.3rem; }
+    .about p:last-child { margin-bottom: 0; }
+    .about-highlight { margin-top: 2rem; padding: 1.5rem 1.8rem; border-left: 3px solid var(--red); background: rgba(193,39,45,0.04); font-style: italic; font-size: 1rem; line-height: 1.7; color: var(--black); }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .stat-card { padding: 2.2rem 2rem; background: var(--black); color: #fff; position: relative; }
+    .stat-card.red { background: var(--red); }
+    .stat-card.light { background: var(--light); color: var(--black); }
+    .stat-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; }
+    .stat-card:not(.red):not(.light)::before { background: var(--red); }
+    .stat-card.red::before { background: rgba(255,255,255,0.3); }
+    .stat-card.light::before { background: var(--black); }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; line-height: 1; }
+    .stat-lbl { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.4rem; opacity: 0.6; }
 
-    .hero-visual {
-      position: relative; z-index: 1;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .hero-emblem {
-      width: 260px; height: 260px;
-      border: 2px solid rgba(255,255,255,0.15);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      color: #fff;
-      position: relative;
-    }
-    .hero-emblem::before {
-      content: '';
-      position: absolute; inset: 12px;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 50%;
-    }
-    .hero-emblem .year {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 4rem; font-weight: 300; line-height: 1;
-      color: rgba(255,255,255,0.9);
-    }
-    .hero-emblem .year-label {
-      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(255,255,255,0.5); margin-top: 0.3rem;
-    }
-    .hero-emblem .eagle { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    /* OBJECTIFS */
+    .objectifs { background: var(--light); padding: 8rem 5rem; }
+    .objectifs-inner { max-width: 1280px; margin: 0 auto; }
+    .objectifs-header { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-bottom: 5rem; align-items: end; }
+    .objectifs-intro { font-size: 0.95rem; line-height: 1.85; color: var(--grey); }
+    .obj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(0,0,0,0.06); }
+    .obj-card { background: var(--white); padding: 2.5rem 2.2rem; position: relative; overflow: hidden; transition: background 0.35s; }
+    .obj-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform 0.35s; }
+    .obj-card:hover { background: var(--black); }
+    .obj-card:hover::after { transform: scaleX(1); }
+    .obj-card:hover .obj-title, .obj-card:hover .obj-desc { color: #fff; }
+    .obj-card:hover .obj-desc { color: rgba(255,255,255,0.55); }
+    .obj-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300; color: rgba(193,39,45,0.15); line-height: 1; margin-bottom: 0.5rem; transition: color 0.35s; }
+    .obj-card:hover .obj-num { color: rgba(255,255,255,0.1); }
+    .obj-title { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 400; margin-bottom: 0.8rem; transition: color 0.35s; }
+    .obj-desc { font-size: 0.87rem; line-height: 1.75; color: var(--grey); transition: color 0.35s; }
 
-    /* ── SECTION HEADER ── */
-    .section-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-    .section-tag {
-      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--red); margin-bottom: 0.75rem; display: block;
-    }
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 300; line-height: 1.2;
-    }
+    /* ECOSYSTEM */
+    .ecosystem { padding: 8rem 5rem; max-width: 1280px; margin: 0 auto; }
+    .eco-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: rgba(0,0,0,0.06); margin-top: 4rem; }
+    .eco-card { background: var(--white); padding: 2rem; transition: background 0.3s; }
+    .eco-card:hover { background: var(--light); }
+    .eco-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .eco-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; margin-bottom: 0.5rem; }
+    .eco-desc { font-size: 0.82rem; line-height: 1.65; color: var(--grey); }
 
-    /* ── ABOUT ── */
-    .about {
-      padding: 7rem 3rem;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
-      max-width: 1200px; margin: 0 auto;
-    }
-    .about-text h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
-      font-weight: 300; line-height: 1.25; margin-bottom: 1.5rem;
-    }
-    .about-text p {
-      font-size: 0.95rem; line-height: 1.8; color: var(--grey); margin-bottom: 1.2rem;
-    }
-    .about-stats {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
-    }
-    .stat-card {
-      padding: 2rem;
-      background: var(--black); color: #fff;
-      position: relative;
-    }
-    .stat-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0;
-      width: 3px; height: 100%;
-      background: var(--red);
-    }
-    .stat-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.8rem; font-weight: 300;
-      line-height: 1; margin-bottom: 0.4rem;
-    }
-    .stat-label {
-      font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-    }
+    /* CONTEXT */
+    .context { background: var(--black); color: #fff; padding: 8rem 5rem; position: relative; overflow: hidden; }
+    .context::before { content: 'SHQIPTAR'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Cormorant Garamond', serif; font-size: clamp(7rem, 18vw, 17rem); font-weight: 300; color: rgba(255,255,255,0.025); white-space: nowrap; pointer-events: none; letter-spacing: 0.1em; }
+    .context-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; position: relative; z-index: 1; }
+    .context-text p { font-size: 0.95rem; line-height: 1.85; color: rgba(255,255,255,0.55); margin-bottom: 1.3rem; }
+    .context-text .eyebrow-label { color: var(--red); }
+    .context-text .eyebrow-line { background: var(--red); }
+    .context-text .section-title-lg { color: rgba(255,255,255,0.92); margin-bottom: 1.8rem; }
+    .context-facts { display: flex; flex-direction: column; gap: 2px; }
+    .fact-row { padding: 1.5rem 2rem; background: rgba(255,255,255,0.04); display: grid; grid-template-columns: 90px 1fr; gap: 1.5rem; align-items: center; border-left: 2px solid rgba(193,39,45,0.3); transition: background 0.25s, border-color 0.25s; }
+    .fact-row:hover { background: rgba(255,255,255,0.07); border-color: var(--red); }
+    .fact-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--red); }
+    .fact-text { font-size: 0.85rem; line-height: 1.65; color: rgba(255,255,255,0.5); }
+    .fact-text strong { color: rgba(255,255,255,0.85); display: block; margin-bottom: 0.1rem; }
 
-    /* ── SERVICES ── */
-    .services {
-      padding: 7rem 3rem;
-      background: var(--light);
-    }
-    .services-inner { max-width: 1200px; margin: 0 auto; }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px;
-      background: rgba(0,0,0,0.08);
-    }
-    .service-card {
-      background: var(--white);
-      padding: 2.5rem;
-      transition: background 0.3s, transform 0.3s;
-      position: relative; overflow: hidden;
-    }
-    .service-card:hover {
-      background: var(--black); color: #fff;
-    }
-    .service-card:hover .service-desc { color: rgba(255,255,255,0.55); }
-    .service-card:hover .service-icon { background: var(--red); color: #fff; }
-    .service-icon {
-      width: 50px; height: 50px;
-      background: var(--light);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: 1.5rem;
-      transition: background 0.3s, color 0.3s;
-    }
-    .service-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem; font-weight: 400; margin-bottom: 0.75rem;
-    }
-    .service-desc {
-      font-size: 0.88rem; line-height: 1.7; color: var(--grey);
-      transition: color 0.3s;
-    }
-
-    /* ── MISSION ── */
-    .mission {
-      padding: 7rem 3rem;
-      background: var(--black); color: #fff;
-      text-align: center;
-      position: relative; overflow: hidden;
-    }
-    .mission::before {
-      content: 'SHQIPTAR';
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(8rem, 20vw, 18rem);
-      font-weight: 300;
-      color: rgba(255,255,255,0.03);
-      white-space: nowrap; pointer-events: none;
-    }
-    .mission-inner { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
-    .mission-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.5rem, 3vw, 2.4rem);
-      font-weight: 300; font-style: italic;
-      line-height: 1.5; margin-bottom: 2rem;
-      color: rgba(255,255,255,0.9);
-    }
-    .mission-quote span { color: var(--red); }
-    .mission-body {
-      font-size: 0.95rem; line-height: 1.8; color: rgba(255,255,255,0.5);
-    }
-
-    /* ── EVENTS ── */
-    .events {
-      padding: 7rem 3rem;
-      max-width: 1200px; margin: 0 auto;
-    }
-    .events-list { display: flex; flex-direction: column; gap: 0; }
-    .event-item {
-      display: grid; grid-template-columns: 80px 1fr auto;
-      align-items: center; gap: 2rem;
-      padding: 1.8rem 0;
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-      transition: padding 0.3s;
-    }
-    .event-item:hover { padding-left: 1rem; }
-    .event-date {
-      text-align: center;
-    }
-    .event-day {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem; font-weight: 300; line-height: 1;
-    }
-    .event-month {
-      font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red);
-    }
-    .event-info h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem; font-weight: 400; margin-bottom: 0.25rem;
-    }
-    .event-info p { font-size: 0.82rem; color: var(--grey); }
-    .event-badge {
-      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.3rem 0.8rem;
-      border: 1px solid;
-    }
+    /* EVENTS */
+    .events { padding: 8rem 5rem; }
+    .events-inner { max-width: 1280px; margin: 0 auto; }
+    .events-header { display: grid; grid-template-columns: 1fr auto; align-items: end; margin-bottom: 4rem; }
+    .event-list { display: flex; flex-direction: column; }
+    .event-row { display: grid; grid-template-columns: 90px 1fr auto; align-items: center; gap: 2.5rem; padding: 1.8rem 0; border-bottom: 1px solid rgba(0,0,0,0.08); transition: all 0.25s; position: relative; }
+    .event-row:before { content: ''; position: absolute; left: -5rem; top: 0; bottom: 0; width: 3px; background: var(--red); transform: scaleY(0); transform-origin: center; transition: transform 0.25s; }
+    .event-row:hover:before { transform: scaleY(1); }
+    .event-row:hover { padding-left: 0.5rem; }
+    .event-date-col { text-align: center; }
+    .ev-day { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; line-height: 1; color: var(--red); }
+    .ev-month { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grey); }
+    .ev-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 0.35rem; }
+    .ev-meta { font-size: 0.82rem; color: var(--grey); }
+    .ev-badge { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.9rem; border: 1px solid; white-space: nowrap; }
     .badge-culture { color: var(--gold); border-color: var(--gold); }
     .badge-formation { color: var(--red); border-color: var(--red); }
-    .badge-social { color: var(--grey); border-color: var(--grey); }
+    .badge-social { color: #5a9e7a; border-color: #5a9e7a; }
+    .badge-national { color: var(--black); border-color: var(--black); }
 
-    /* ── CONTACT ── */
-    .contact {
-      padding: 7rem 3rem;
-      background: var(--light);
-    }
-    .contact-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
-    }
-    .contact-info h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; margin-bottom: 1.5rem;
-    }
-    .contact-info p { font-size: 0.95rem; line-height: 1.8; color: var(--grey); margin-bottom: 2rem; }
-    .contact-details { display: flex; flex-direction: column; gap: 1.2rem; }
-    .contact-detail {
-      display: flex; align-items: flex-start; gap: 1rem;
-    }
-    .detail-icon {
-      width: 36px; height: 36px; min-width: 36px;
-      background: var(--red); color: #fff;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.9rem;
-    }
-    .detail-text { font-size: 0.9rem; line-height: 1.6; color: var(--grey); }
-    .detail-text strong { color: var(--black); display: block; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.1rem; }
-
+    /* CONTACT */
+    .contact { padding: 8rem 5rem; background: var(--light); }
+    .contact-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 5fr 7fr; gap: 7rem; }
+    .contact-info p { font-size: 0.95rem; line-height: 1.85; color: var(--grey); margin: 1.5rem 0 2.5rem; }
+    .contact-details { display: flex; flex-direction: column; }
+    .detail-row { display: grid; grid-template-columns: 48px 1fr; gap: 1rem; align-items: start; padding: 1.2rem 0; border-bottom: 1px solid rgba(0,0,0,0.07); }
+    .detail-icon { width: 38px; height: 38px; background: var(--red); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+    .detail-lbl { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grey); margin-bottom: 0.2rem; }
+    .detail-val { font-size: 0.9rem; font-weight: 500; }
+    .detail-val a { color: var(--red); text-decoration: none; }
     .contact-form { display: flex; flex-direction: column; gap: 1rem; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-input, .form-textarea {
-      width: 100%; padding: 0.9rem 1rem;
-      background: #fff; border: 1px solid rgba(0,0,0,0.12);
-      font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
-      outline: none; transition: border-color 0.2s;
-    }
-    .form-input:focus, .form-textarea:focus { border-color: var(--red); }
-    .form-textarea { height: 130px; resize: vertical; }
+    .form-field, .form-area, .form-select { width: 100%; padding: 0.95rem 1.1rem; background: #fff; border: 1px solid rgba(0,0,0,0.1); font-family: 'DM Sans', sans-serif; font-size: 0.88rem; outline: none; transition: border-color 0.2s; }
+    .form-field:focus, .form-area:focus, .form-select:focus { border-color: var(--red); }
+    .form-area { height: 140px; resize: vertical; }
+    .form-note { font-size: 0.78rem; color: var(--grey); }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--black); color: rgba(255,255,255,0.5);
-      padding: 3rem;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 1rem;
-    }
-    .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem; color: #fff;
-    }
-    .footer-logo span { color: var(--red); }
-    .footer-text { font-size: 0.78rem; }
-    .footer-links { display: flex; gap: 1.5rem; }
-    .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: #fff; }
+    /* FOOTER */
+    footer { background: #0b0b0b; color: rgba(255,255,255,0.4); padding: 4rem 5rem 2.5rem; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: #fff; margin-bottom: 1rem; }
+    .footer-brand-name span { color: var(--red); }
+    .footer-brand-desc { font-size: 0.83rem; line-height: 1.8; }
+    .footer-col-title { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 1.2rem; font-weight: 600; }
+    .footer-links-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer-links-list a { font-size: 0.85rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+    .footer-links-list a:hover { color: #fff; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { font-size: 0.78rem; }
+    .footer-legal { display: flex; gap: 1.5rem; }
+    .footer-legal a { font-size: 0.75rem; color: rgba(255,255,255,0.25); text-decoration: none; }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .hero-tag { animation: fadeUp 0.6s ease forwards; }
-    .hero-title { animation: fadeUp 0.6s 0.15s ease both; }
-    .hero-subtitle { animation: fadeUp 0.6s 0.3s ease both; }
-    .hero-actions { animation: fadeUp 0.6s 0.45s ease both; }
-    .hero-visual { animation: fadeUp 0.6s 0.3s ease both; }
+    /* ANIMS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+    .hero-title { animation: fadeUp 0.6s 0.12s ease both; }
+    .hero-desc { animation: fadeUp 0.6s 0.24s ease both; }
+    .hero-buttons { animation: fadeUp 0.6s 0.36s ease both; }
+    .hero-contact-strip { animation: fadeUp 0.6s 0.48s ease both; }
+    .hero-emblem { animation: fadeUp 0.7s 0.3s ease both; }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
+    /* RESPONSIVE */
+    @media (max-width: 1000px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 4rem; }
-      .hero-bg-pattern, .hero-bg-overlay { display: none; }
-      .hero-visual { display: none; }
-      .about { grid-template-columns: 1fr; padding: 5rem 1.5rem; gap: 3rem; }
-      .services { padding: 5rem 1.5rem; }
-      .services-grid { grid-template-columns: 1fr; }
-      .contact-inner { grid-template-columns: 1fr; padding: 5rem 1.5rem; gap: 3rem; }
-      .contact { padding: 5rem 1.5rem; }
-      .events { padding: 5rem 1.5rem; }
-      footer { flex-direction: column; text-align: center; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 7rem 2rem 4rem; }
+      .hero-right { display: none; }
+      .about { grid-template-columns: 1fr; padding: 5rem 2rem; gap: 3.5rem; }
+      .objectifs { padding: 5rem 2rem; }
+      .objectifs-header { grid-template-columns: 1fr; gap: 2rem; }
+      .obj-grid { grid-template-columns: 1fr; }
+      .ecosystem { padding: 5rem 2rem; }
+      .eco-grid { grid-template-columns: 1fr 1fr; }
+      .context { padding: 5rem 2rem; }
+      .context-inner { grid-template-columns: 1fr; gap: 4rem; }
+      .events { padding: 5rem 2rem; }
+      .events-header { grid-template-columns: 1fr; gap: 1.5rem; }
+      .event-row { grid-template-columns: 70px 1fr; gap: 1.5rem; }
+      .event-row .ev-badge { display: none; }
+      .contact { padding: 5rem 2rem; }
+      .contact-inner { grid-template-columns: 1fr; gap: 4rem; }
+      footer { padding: 4rem 2rem 2rem; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
       .form-row { grid-template-columns: 1fr; }
     }
   </style>
@@ -427,198 +232,365 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <div class="flag"></div>
-    <div class="nav-logo-text">CA<span>Genève</span></div>
+    <div class="nav-shield">🦅</div>
+    <span class="nav-logo-text">CA<span>Genève</span></span>
   </a>
   <ul class="nav-links">
-    <li><a href="#about">À Propos</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#mission">Mission</a></li>
-    <li><a href="#events">Événements</a></li>
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#objectifs">Objectifs</a></li>
+    <li><a href="#partenaires">Partenaires</a></li>
+    <li><a href="#evenements">Événements</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg-pattern"></div>
-  <div class="hero-bg-overlay"></div>
-
-  <div class="hero-content">
-    <div class="hero-tag">Komunitet Shqiptar Gjenevë</div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="hero-line"></div>
+      <span class="hero-eyebrow-text">Komunitet Shqiptar Gjenevë · Vernier, Genève</span>
+    </div>
     <h1 class="hero-title">
-      Communauté<br><em>Albanaise</em><br>de Genève
+      Communauté<br>
+      <em>Albanaise</em>
+      de Genève
     </h1>
-    <p class="hero-subtitle">
-      Association dédiée à l'intégration sociale et culturelle des individus et des familles albanophones résidant dans le canton de Genève et en Suisse.
+    <p class="hero-desc">
+      Association à but non lucratif dont le siège est établi dans la Commune de Vernier. Nous favorisons l'intégration sociale des individus et familles albanophones résidant dans le canton de Genève et en Suisse, en facilitant la communication entre la communauté albanaise et les institutions cantonales.
     </p>
-    <div class="hero-actions">
-      <a href="#services" class="btn-primary">Nos services</a>
+    <div class="hero-buttons">
+      <a href="#objectifs" class="btn-primary">Nos objectifs</a>
       <a href="#contact" class="btn-outline">Nous rejoindre</a>
     </div>
+    <div class="hero-contact-strip">
+      <div class="strip-item">
+        <span class="strip-label">Adresse</span>
+        <span class="strip-value">Rue du Croix-du-Levant 14, 1220 Les Avanchets</span>
+      </div>
+      <div class="strip-item">
+        <span class="strip-label">Téléphone</span>
+        <span class="strip-value"><a href="tel:0799156551">079 915 65 51</a></span>
+      </div>
+      <div class="strip-item">
+        <span class="strip-label">Email</span>
+        <span class="strip-value"><a href="mailto:cageneve@gmail.com">cageneve@gmail.com</a></span>
+      </div>
+      <div class="strip-item">
+        <span class="strip-label">Président</span>
+        <span class="strip-value">Nasuf NUHIU</span>
+      </div>
+    </div>
   </div>
-
-  <div class="hero-visual">
+  <div class="hero-right">
+    <div class="hero-right-pattern"></div>
+    <div class="hero-right-overlay"></div>
     <div class="hero-emblem">
-      <div class="eagle">🦅</div>
-      <div class="year">1990</div>
-      <div class="year-label">Établie à Genève</div>
+      <span class="eagle-symbol">🦅</span>
+      <div class="emblem-title">CAGenève</div>
+      <div class="emblem-sub">Komunitet Shqiptar Gjenevë</div>
+      <div class="emblem-divider"></div>
+      <div class="emblem-fact">
+        www.cageneve.ch<br>cageneve@gmail.com<br>
+        079 915 65 51<br>
+        1220 Les Avanchets, Genève
+      </div>
     </div>
   </div>
 </section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <div class="ticker-item">Intégration Sociale</div>
+    <div class="ticker-item">Culture Albanaise</div>
+    <div class="ticker-item">Dita e Flamurit — Fête du Drapeau</div>
+    <div class="ticker-item">Cours de Langue</div>
+    <div class="ticker-item">Ansambli Gëzuar</div>
+    <div class="ticker-item">Commune de Vernier</div>
+    <div class="ticker-item">LAPSh — Lidhja e Arsimtarëve dhe Prindërve</div>
+    <div class="ticker-item">UPA — Université Populaire Albanaise</div>
+    <div class="ticker-item">Kosovo · Albanie · Suisse</div>
+    <div class="ticker-item">220 000 Albanais en Suisse</div>
+    <div class="ticker-item">Intégration Sociale</div>
+    <div class="ticker-item">Culture Albanaise</div>
+    <div class="ticker-item">Dita e Flamurit — Fête du Drapeau</div>
+    <div class="ticker-item">Cours de Langue</div>
+    <div class="ticker-item">Ansambli Gëzuar</div>
+    <div class="ticker-item">Commune de Vernier</div>
+    <div class="ticker-item">LAPSh — Lidhja e Arsimtarëve dhe Prindërve</div>
+    <div class="ticker-item">UPA — Université Populaire Albanaise</div>
+    <div class="ticker-item">Kosovo · Albanie · Suisse</div>
+    <div class="ticker-item">220 000 Albanais en Suisse</div>
+  </div>
+</div>
 
 <!-- ABOUT -->
 <section class="about" id="about">
-  <div class="about-text">
-    <span class="section-tag">Qui sommes-nous</span>
-    <h2>Un pont entre deux cultures, une maison loin de chez soi</h2>
-    <p>
-      La Communauté Albanaise de Genève (CAGenève) est une association à but non lucratif dont le siège social est établi dans la Commune de Vernier. Elle regroupe les albanophone résidant dans le canton de Genève et en Suisse romande.
-    </p>
-    <p>
-      Notre association favorise l'intégration sociale des individus et des familles albanophones, facilite la communication entre la communauté albanaise et les différentes associations ainsi que les institutions cantonales.
-    </p>
-    <p>
-      Contact : <strong>Nasuf NUHIU</strong>, Président de l'association.<br>
-      Site : <strong>www.cageneve.ch</strong>
-    </p>
+  <div class="about-content">
+    <div class="section-eyebrow">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-label">Qui sommes-nous</span>
+    </div>
+    <h2 class="section-title-lg" style="margin-bottom:1.5rem;">Un pont entre la communauté albanaise et les institutions genevoises</h2>
+    <p>La <strong>Communauté Albanaise Genève (CAGenève)</strong> est une association à but non lucratif dont le siège social est établi dans la Commune de Vernier, à l'adresse <strong>Rue du Croix-du-Levant 14, 1220 Les Avanchets (GE)</strong>. Elle est dirigée par son président, <strong>Nasuf NUHIU</strong>.</p>
+    <p>Notre association regroupe les albanophone résidant dans le canton de Genève et en Suisse romande, qu'ils soient originaires du Kosovo, d'Albanie, de Macédoine du Nord ou d'autres régions balkaniques de langue albanaise. Les Albanais de Genève se concentrent notamment dans les communes de Vernier, Meyrin, et la région de Cointrin.</p>
+    <p>Nous agissons comme interface entre la communauté albanaise, les différentes associations, et les institutions cantonales genevoises — services sociaux, services médicaux, personnel enseignant — contribuant à une intégration réussie et durable dans la société suisse.</p>
+    <div class="about-highlight">
+      « Favoriser l'intégration sociale des individus et des familles albanophones résidents dans le canton de Genève et en Suisse, afin de faciliter l'intégration et la communication entre la communauté albanaise et les différentes associations ainsi que les institutions cantonales. »
+    </div>
   </div>
   <div class="about-stats">
     <div class="stat-card">
-      <div class="stat-number">15k+</div>
-      <div class="stat-label">Albanais à Genève</div>
+      <div class="stat-num">220k</div>
+      <div class="stat-lbl">Albanais en Suisse</div>
     </div>
-    <div class="stat-card" style="background: var(--red);">
-      <div class="stat-number">220k</div>
-      <div class="stat-label">Albanais en Suisse</div>
+    <div class="stat-card red">
+      <div class="stat-num">150k+</div>
+      <div class="stat-lbl">Kosovars en Suisse</div>
+    </div>
+    <div class="stat-card light">
+      <div class="stat-num">15k+</div>
+      <div class="stat-lbl">Albanais à Genève</div>
     </div>
     <div class="stat-card">
-      <div class="stat-number">3</div>
-      <div class="stat-label">Langues de service</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number">2e</div>
-      <div class="stat-label">Communauté étrangère en Suisse</div>
+      <div class="stat-num">2<sup style="font-size:1.5rem">e</sup></div>
+      <div class="stat-lbl">Communauté étrangère en Suisse, après les Italiens</div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="services-inner">
-    <div class="section-header">
-      <span class="section-tag">Ce que nous faisons</span>
-      <h2 class="section-title">Nos Services & Programmes</h2>
+<!-- OBJECTIFS -->
+<section class="objectifs" id="objectifs">
+  <div class="objectifs-inner">
+    <div class="objectifs-header">
+      <div>
+        <div class="section-eyebrow">
+          <div class="eyebrow-line"></div>
+          <span class="eyebrow-label">Nos Objectifs</span>
+        </div>
+        <h2 class="section-title-lg">Ce que nous nous engageons à faire</h2>
+      </div>
+      <p class="objectifs-intro">Nos neuf objectifs fondamentaux guident toutes nos actions, depuis l'accueil des nouveaux arrivants jusqu'au renforcement du tissu économique et culturel de la communauté albanaise en Suisse.</p>
     </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">🤝</div>
-        <h3 class="service-title">Intégration Sociale</h3>
-        <p class="service-desc">Accompagnement des nouveaux arrivants dans leurs premières démarches administratives, scolaires et sociales à Genève et en Suisse romande.</p>
+    <div class="obj-grid">
+      <div class="obj-card">
+        <div class="obj-num">01</div>
+        <h3 class="obj-title">Unité de la communauté</h3>
+        <p class="obj-desc">Rassembler tous les Albanais désireux de se retrouver, notamment ceux vivant à Genève et dans la région transfrontalière franco-suisse.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🎭</div>
-        <h3 class="service-title">Culture & Identité</h3>
-        <p class="service-desc">Organisation d'expositions, concerts, spectacles de danse et d'événements culturels pour promouvoir la richesse de la culture albanaise auprès de la société genevoise.</p>
+      <div class="obj-card">
+        <div class="obj-num">02</div>
+        <h3 class="obj-title">Fraternité & Liens</h3>
+        <p class="obj-desc">Développer et renforcer le sentiment de fraternité entre membres de la communauté albanaise, toutes générations et origines confondues.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">📚</div>
-        <h3 class="service-title">Formation & Éducation</h3>
-        <p class="service-desc">Cours de français, d'albanais et soutien scolaire pour les enfants. Conférences thématiques sur la vie pratique en Suisse et les opportunités professionnelles.</p>
+      <div class="obj-card">
+        <div class="obj-num">03</div>
+        <h3 class="obj-title">Intégration efficace</h3>
+        <p class="obj-desc">Encourager l'apprentissage de l'albanais par les enfants, du français par les adultes, et soutenir la scolarisation aux niveaux secondaire et tertiaire.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">💼</div>
-        <h3 class="service-title">Emploi & Orientation</h3>
-        <p class="service-desc">Mise en relation avec les institutions cantonales, soutien dans la recherche d'emploi et l'orientation professionnelle pour les membres de la communauté.</p>
+      <div class="obj-card">
+        <div class="obj-num">04</div>
+        <h3 class="obj-title">Culture & Identité</h3>
+        <p class="obj-desc">Aider les associations culturelles et artistiques préservant les spécificités albanaises tout en enrichissant la diversité culturelle de Genève.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🏛️</div>
-        <h3 class="service-title">Médiation Institutionnelle</h3>
-        <p class="service-desc">Interface entre la communauté albanophone et les institutions cantonales genevoises, les services sociaux, médicaux et le système éducatif suisse.</p>
+      <div class="obj-card">
+        <div class="obj-num">05</div>
+        <h3 class="obj-title">Information & Services</h3>
+        <p class="obj-desc">Offrir à chaque famille et individu des informations précises sur l'emploi, la scolarité, les droits et obligations légaux, ainsi que des services professionnels accessibles.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">👨‍👩‍👧‍👦</div>
-        <h3 class="service-title">Soutien aux Familles</h3>
-        <p class="service-desc">Aide aux familles nouvellement arrivées, conseil juridique de base, et orientation vers les services compétents pour le logement et les démarches administratives.</p>
+      <div class="obj-card">
+        <div class="obj-num">06</div>
+        <h3 class="obj-title">Soutien matériel</h3>
+        <p class="obj-desc">Apporter un soutien matériel aux membres dans le besoin et, dans des cas exceptionnels, aux compatriotes en difficulté dans le pays d'origine.</p>
+      </div>
+      <div class="obj-card">
+        <div class="obj-num">07</div>
+        <h3 class="obj-title">Réseau d'entreprises</h3>
+        <p class="obj-desc">Mettre en relation les entreprises à propriétaires albanais pour favoriser la croissance économique et le développement professionnel au sein de la communauté.</p>
+      </div>
+      <div class="obj-card">
+        <div class="obj-num">08</div>
+        <h3 class="obj-title">Sport & Jeunesse</h3>
+        <p class="obj-desc">Soutenir les activités sportives des clubs à majorité albanaise et lutter contre toute forme de xénophobie dans les espaces publics genevois.</p>
+      </div>
+      <div class="obj-card">
+        <div class="obj-num">09</div>
+        <h3 class="obj-title">Coopération inter-communautaire</h3>
+        <p class="obj-desc">Développer et renforcer la collaboration entre CAGenève et d'autres communautés albanaises et non-albanaises en Suisse et au-delà des frontières.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MISSION -->
-<section class="mission" id="mission">
-  <div class="mission-inner">
-    <span class="section-tag" style="color: rgba(255,255,255,0.4);">Notre Mission</span>
-    <blockquote class="mission-quote">
-      « Favoriser l'intégration et la <span>communication</span> entre la communauté albanaise et les institutions genevoises. »
-    </blockquote>
-    <p class="mission-body">
-      La communauté albanaise, deuxième groupe d'immigrés après les Italiens en Suisse, compte environ 220 000 personnes dont plus de 15 000 dans le canton de Genève. CAGenève s'engage à renforcer les liens entre les générations, à préserver la langue et la culture albanaises tout en facilitant une intégration réussie dans la société suisse.
-    </p>
+<!-- ECOSYSTEM -->
+<section class="ecosystem" id="partenaires">
+  <div class="section-eyebrow">
+    <div class="eyebrow-line"></div>
+    <span class="eyebrow-label">Écosystème Associatif</span>
+  </div>
+  <h2 class="section-title-lg" style="margin-bottom:0.5rem;">Partenaires &amp; associations liées</h2>
+  <p style="font-size:0.95rem;line-height:1.8;color:var(--grey);max-width:680px;margin-top:0.8rem;">CAGenève collabore activement avec les associations albanaises genevoises et les institutions cantonales pour construire un écosystème d'intégration complet.</p>
+  <div class="eco-grid">
+    <div class="eco-card">
+      <div class="eco-icon">🎶</div>
+      <div class="eco-name">Ansambli Gëzuar</div>
+      <p class="eco-desc">Ensemble de chants et danses folkloriques albanais basé à Genève. Pilier de la préservation culturelle albanaise en Suisse. Dirigé par M. Fadil Avdija, visité par la cheffe du Consulat du Kosovo.</p>
+    </div>
+    <div class="eco-card">
+      <div class="eco-icon">📚</div>
+      <div class="eco-name">LAPSh Genève</div>
+      <p class="eco-desc">Lidhja e Arsimtarëve dhe Prindërve Shqiptar — Ligue des Enseignants et Parents Albanais. Promotion de l'éducation et de la langue albanaise pour les enfants de la diaspora. info@lapsh.ch · www.lapsh.ch</p>
+    </div>
+    <div class="eco-card">
+      <div class="eco-icon">🌱</div>
+      <div class="eco-name">Rinia Kontakt</div>
+      <p class="eco-desc">Organisation de jeunesse albanaise genevoise. Engagement culturel et social des nouvelles générations de la diaspora albanaise en Suisse romande.</p>
+    </div>
+    <div class="eco-card">
+      <div class="eco-icon">🏛️</div>
+      <div class="eco-name">UPA — Univ. Populaire Albanaise</div>
+      <p class="eco-desc">Fondée le 30 avril 1996. Lieu de rencontre, formation, information. Cours de français, albanais, informatique, aide aux devoirs, permanences sociales. Chemin du Surinam 7, 1203 Genève. upa-upsh@upa.ch</p>
+    </div>
+    <div class="eco-card">
+      <div class="eco-icon">🎓</div>
+      <div class="eco-name">AEAUG — Étudiants Albanais UniGE</div>
+      <p class="eco-desc">Association des Étudiant·e·s Albanais·es de l'Université de Genève. Conférences, projections, débats et rencontres intercommunautaires. Bd du Pont d'Arve 40, 1205 Genève.</p>
+    </div>
+    <div class="eco-card">
+      <div class="eco-icon">🏙️</div>
+      <div class="eco-name">Ville de Vernier</div>
+      <p class="eco-desc">Partenaire institutionnel local. CAGenève est répertoriée dans l'annuaire officiel des associations de la Commune de Vernier, siège administratif de l'association.</p>
+    </div>
+    <div class="eco-card">
+      <div class="eco-icon">🕊️</div>
+      <div class="eco-name">We Are Illyrian</div>
+      <p class="eco-desc">Association créée le 4 juillet 2023, centrée sur les femmes albanaises à Genève. Cours de français, danse albanaise traditionnelle (mercredi, 18h30–20h30), coaching citoyenneté et naturalisation.</p>
+    </div>
+    <div class="eco-card">
+      <div class="eco-icon">🇽🇰</div>
+      <div class="eco-name">Consulat du Kosovo à Genève</div>
+      <p class="eco-desc">Partenaire diplomatique de référence. Collabore avec les associations albanaises genevoises lors des événements nationaux et des commémorations officielles (Dita e Flamurit, etc.).</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTEXT -->
+<section class="context" id="context">
+  <div class="context-inner">
+    <div class="context-text">
+      <div class="section-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-label">La communauté albanaise en Suisse</span>
+      </div>
+      <h2 class="section-title-lg">Une histoire de migration, d'intégration et de résilience</h2>
+      <p>Les premiers travailleurs kosovars arrivèrent en Suisse dans les années 1960 comme saisonniers — ils travaillaient neuf mois et rentraient trois mois. Jusqu'à l'abolition du statut de saisonnier, qui déstabilisa de nombreuses familles.</p>
+      <p>Avec les guerres en ex-Yougoslavie dans les années 1990, un nombre croissant d'Albanais obtinrent des permis B et C et purent faire venir leurs familles. Aujourd'hui, trois générations coexistent : les pionniers des années 60–80, leurs enfants, et les petits-enfants nés en Suisse.</p>
+      <p>La communauté albanaise de Genève — essentiellement composée de Kosovars originaires de la région de Gjilan — constitue le deuxième groupe étranger en Suisse après les Italiens. Sa vie associative, riche et structurée, a joué un rôle fondamental pour maintenir l'identité culturelle tout en facilitant l'intégration.</p>
+    </div>
+    <div class="context-facts">
+      <div class="fact-row">
+        <div class="fact-num">220k</div>
+        <div class="fact-text"><strong>Albanais en Suisse</strong>Dont plus de 150 000 du Kosovo et environ 70 000 d'Albanie ou d'autres Balkans.</div>
+      </div>
+      <div class="fact-row">
+        <div class="fact-num">50k+</div>
+        <div class="fact-text"><strong>Agglomération zurichoise</strong>La plus grande concentration d'Albanais en Suisse se situe dans la région de Zurich.</div>
+      </div>
+      <div class="fact-row">
+        <div class="fact-num">15k+</div>
+        <div class="fact-text"><strong>Canton de Genève</strong>Concentrés dans les communes de Vernier, Meyrin et Cointrin (région de Gjilan à l'origine).</div>
+      </div>
+      <div class="fact-row">
+        <div class="fact-num">3</div>
+        <div class="fact-text"><strong>Générations de migrants</strong>De la génération des saisonniers des années 60–80 aux petits-enfants nés en Suisse.</div>
+      </div>
+      <div class="fact-row">
+        <div class="fact-num">1996</div>
+        <div class="fact-text"><strong>Création de l'UPA</strong>Partenaire historique fondé le 30 avril 1996 avec le soutien du Centre Social Protestant, Caritas et le Conseil d'État de Genève.</div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- EVENTS -->
-<section class="events" id="events">
-  <div class="section-header">
-    <span class="section-tag">Agenda</span>
-    <h2 class="section-title">Prochains Événements</h2>
-  </div>
-  <div class="events-list">
-    <div class="event-item">
-      <div class="event-date">
-        <div class="event-day">08</div>
-        <div class="event-month">Mars 2026</div>
+<section class="events" id="evenements">
+  <div class="events-inner">
+    <div class="events-header">
+      <div>
+        <div class="section-eyebrow">
+          <div class="eyebrow-line"></div>
+          <span class="eyebrow-label">Agenda & Événements</span>
+        </div>
+        <h2 class="section-title-lg">Manifestations &amp; activités régulières</h2>
       </div>
-      <div class="event-info">
-        <h4>Journée Internationale des Droits des Femmes</h4>
-        <p>Soirée de célébration et de partage — Centre Communautaire, Vernier</p>
-      </div>
-      <span class="event-badge badge-culture">Culture</span>
+      <a href="#contact" class="btn-outline" style="white-space:nowrap; align-self:flex-end;">Soumettre un événement</a>
     </div>
-    <div class="event-item">
-      <div class="event-date">
-        <div class="event-day">22</div>
-        <div class="event-month">Mars 2026</div>
+    <div class="event-list">
+      <div class="event-row">
+        <div class="event-date-col"><div class="ev-day">28</div><div class="ev-month">Nov</div></div>
+        <div>
+          <div class="ev-title">Dita e Flamurit — Fête Nationale Albanaise</div>
+          <div class="ev-meta">Salle Palladium, Rue du Stand 3, 1204 Genève — 19h00 · ENTRÉE LIBRE · Avec Ansambli Gëzuar, Rinia Kontakt, LAPSh, groupe folklorique Sali Mani et artistes invités</div>
+        </div>
+        <span class="ev-badge badge-national">National</span>
       </div>
-      <div class="event-info">
-        <h4>Session d'Information : Vie Pratique à Genève</h4>
-        <p>Logement, assurances, école — conférence pour nouveaux arrivants</p>
+      <div class="event-row">
+        <div class="event-date-col"><div class="ev-day">08</div><div class="ev-month">Fév</div></div>
+        <div>
+          <div class="ev-title">Promotion de livre historique albanais</div>
+          <div class="ev-meta">Ecole de Cointrin, Chemin du Ruisseau 39, 1216 Cointrin — 17h00 · Apéritif offert par l'Ansambli Gëzuar · organisé par la Shoqata e Studentëve Shqiptar</div>
+        </div>
+        <span class="ev-badge badge-culture">Culture</span>
       </div>
-      <span class="event-badge badge-formation">Formation</span>
-    </div>
-    <div class="event-item">
-      <div class="event-date">
-        <div class="event-day">28</div>
-        <div class="event-month">Nov 2025</div>
+      <div class="event-row">
+        <div class="event-date-col"><div class="ev-day">★</div><div class="ev-month">Continu</div></div>
+        <div>
+          <div class="ev-title">Cours de danse albanaise traditionnelle</div>
+          <div class="ev-meta">Quartier de l'Étang, Genève — chaque mercredi de 18h30 à 20h30 · CHF 250.-/an · Inscriptions sur place (We Are Illyrian)</div>
+        </div>
+        <span class="ev-badge badge-culture">Culture</span>
       </div>
-      <div class="event-info">
-        <h4>Fête Nationale Albanaise — Dita e Flamurit</h4>
-        <p>Célébration du Jour du Drapeau — Salle de fête, Les Avanchets, Genève</p>
+      <div class="event-row">
+        <div class="event-date-col"><div class="ev-day">★</div><div class="ev-month">Continu</div></div>
+        <div>
+          <div class="ev-title">Cours de langue albanaise — enfants et adultes</div>
+          <div class="ev-meta">Via LAPSh Genève · Sessions tout au long de l'année scolaire · info@lapsh.ch · www.lapsh.ch</div>
+        </div>
+        <span class="ev-badge badge-formation">Formation</span>
       </div>
-      <span class="event-badge badge-culture">Culture</span>
-    </div>
-    <div class="event-item">
-      <div class="event-date">
-        <div class="event-day">15</div>
-        <div class="event-month">Avr 2026</div>
+      <div class="event-row">
+        <div class="event-date-col"><div class="ev-day">★</div><div class="ev-month">Continu</div></div>
+        <div>
+          <div class="ev-title">Cours de français (niveaux A1 à B2)</div>
+          <div class="ev-meta">UPA, Chemin du Surinam 7, 1203 Genève · Lun–Ven 9h–20h · Accueil enfants inclus (lun, mar, jeu, ven 9h–16h) · CHF 25–250 selon module + cotisation 40.-/an</div>
+        </div>
+        <span class="ev-badge badge-formation">Formation</span>
       </div>
-      <div class="event-info">
-        <h4>Cours de Langue Albanaise — Nouvelle Session</h4>
-        <p>Pour enfants et adultes — inscription ouverte dès mars 2026</p>
+      <div class="event-row">
+        <div class="event-date-col"><div class="ev-day">Mar</div><div class="ev-month">Chaque semaine</div></div>
+        <div>
+          <div class="ev-title">Préparation à la naturalisation suisse</div>
+          <div class="ev-meta">Université des Cultures (UPA) — chaque mardi 18h–20h, durée 3 mois · Pour résidents Permis C, 10 ans de résidence, niveau B1 oral / A2 écrit requis</div>
+        </div>
+        <span class="ev-badge badge-formation">Formation</span>
       </div>
-      <span class="event-badge badge-formation">Formation</span>
-    </div>
-    <div class="event-item">
-      <div class="event-date">
-        <div class="event-day">20</div>
-        <div class="event-month">Juin 2026</div>
+      <div class="event-row">
+        <div class="event-date-col"><div class="ev-day">★</div><div class="ev-month">Continu</div></div>
+        <div>
+          <div class="ev-title">Permanences sociales et juridiques</div>
+          <div class="ev-meta">UPA Genève — gratuit sur rendez-vous · Conseils droit de séjour, logement, emploi, scolarité, démarches administratives suisses</div>
+        </div>
+        <span class="ev-badge badge-social">Social</span>
       </div>
-      <div class="event-info">
-        <h4>Pique-nique Annuel de la Communauté</h4>
-        <p>Rencontre conviviale au Parc de la Grange — familles bienvenues</p>
+      <div class="event-row">
+        <div class="event-date-col"><div class="ev-day">★</div><div class="ev-month">Continu</div></div>
+        <div>
+          <div class="ev-title">Soirées d'information communautaires</div>
+          <div class="ev-meta">Thèmes : vie pratique en Suisse, droits et obligations, logement, emploi, bourses scolaires — dates communiquées par email à cageneve@gmail.com</div>
+        </div>
+        <span class="ev-badge badge-social">Social</span>
       </div>
-      <span class="event-badge badge-social">Social</span>
     </div>
   </div>
 </section>
@@ -627,63 +599,112 @@
 <section class="contact" id="contact">
   <div class="contact-inner">
     <div class="contact-info">
-      <span class="section-tag">Contactez-nous</span>
-      <h2>Rejoignez la communauté</h2>
-      <p>Que vous soyez un nouvel arrivant, un albanophone établi à Genève, ou simplement intéressé par notre culture, nous vous accueillons chaleureusement.</p>
+      <div class="section-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-label">Contactez-nous</span>
+      </div>
+      <h2 class="section-title-lg">Rejoindre la communauté</h2>
+      <p>Que vous soyez un nouvel arrivant, un albanophone établi souhaitant s'impliquer, ou simplement curieux de découvrir la culture albanaise, nous vous accueillons chaleureusement — en albanais ou en français.</p>
       <div class="contact-details">
-        <div class="contact-detail">
+        <div class="detail-row">
           <div class="detail-icon">📍</div>
-          <div class="detail-text">
-            <strong>Adresse</strong>
-            Communauté Albanaise Genève<br>1220 Les Avanchets, Genève<br>Commune de Vernier
-          </div>
+          <div><div class="detail-lbl">Adresse du siège</div><div class="detail-val">Rue du Croix-du-Levant 14<br>1220 Les Avanchets, Commune de Vernier</div></div>
         </div>
-        <div class="contact-detail">
+        <div class="detail-row">
+          <div class="detail-icon">📞</div>
+          <div><div class="detail-lbl">Téléphone</div><div class="detail-val"><a href="tel:0799156551">079 915 65 51</a></div></div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon">✉️</div>
+          <div><div class="detail-lbl">Email</div><div class="detail-val"><a href="mailto:cageneve@gmail.com">cageneve@gmail.com</a></div></div>
+        </div>
+        <div class="detail-row">
           <div class="detail-icon">🌐</div>
-          <div class="detail-text">
-            <strong>Site Web</strong>
-            www.cageneve.ch
-          </div>
+          <div><div class="detail-lbl">Site Web</div><div class="detail-val"><a href="http://www.cageneve.ch" target="_blank">www.cageneve.ch</a></div></div>
         </div>
-        <div class="contact-detail">
+        <div class="detail-row">
           <div class="detail-icon">👤</div>
-          <div class="detail-text">
-            <strong>Contact</strong>
-            Nasuf NUHIU — Président
-          </div>
+          <div><div class="detail-lbl">Président</div><div class="detail-val">Nasuf NUHIU</div></div>
         </div>
-        <div class="contact-detail">
+        <div class="detail-row">
           <div class="detail-icon">🗣️</div>
-          <div class="detail-text">
-            <strong>Langues</strong>
-            Albanais · Français · Shqip
-          </div>
+          <div><div class="detail-lbl">Langues de service</div><div class="detail-val">Shqip (Albanais) · Français</div></div>
         </div>
       </div>
     </div>
-
-    <form class="contact-form" onsubmit="return false;">
-      <div class="form-row">
-        <input class="form-input" type="text" placeholder="Prénom" />
-        <input class="form-input" type="text" placeholder="Nom" />
-      </div>
-      <input class="form-input" type="email" placeholder="Adresse e-mail" />
-      <input class="form-input" type="text" placeholder="Sujet" />
-      <textarea class="form-textarea" placeholder="Votre message…"></textarea>
-      <button type="submit" class="btn-primary" style="align-self: flex-start;">Envoyer le message</button>
-    </form>
+    <div>
+      <p style="font-size:0.88rem;color:var(--grey);margin-bottom:1.5rem;line-height:1.7;">Remplissez le formulaire ou écrivez directement à <strong>cageneve@gmail.com</strong>. Nous répondons en albanais et en français.</p>
+      <form class="contact-form" onsubmit="return false;">
+        <div class="form-row">
+          <input class="form-field" type="text" placeholder="Prénom *" />
+          <input class="form-field" type="text" placeholder="Nom *" />
+        </div>
+        <input class="form-field" type="email" placeholder="Adresse e-mail *" />
+        <input class="form-field" type="tel" placeholder="Téléphone (optionnel)" />
+        <select class="form-field form-select" style="cursor:pointer;">
+          <option value="">Objet de votre message…</option>
+          <option>Demande d'information générale</option>
+          <option>Adhésion à l'association</option>
+          <option>Soutien / aide administrative</option>
+          <option>Partenariat ou collaboration</option>
+          <option>Événement culturel</option>
+          <option>Cours de langue</option>
+          <option>Autre</option>
+        </select>
+        <textarea class="form-area" placeholder="Votre message… (français ou albanais / mesazhi juaj…)"></textarea>
+        <p class="form-note">* Champs obligatoires. Vos données restent confidentielles.</p>
+        <button type="submit" class="btn-primary" style="align-self:flex-start;border:none;cursor:pointer;">Envoyer le message</button>
+      </form>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">CA<span>Genève</span></div>
-  <div class="footer-text">© 2026 Communauté Albanaise Genève. Tous droits réservés.</div>
-  <div class="footer-links">
-    <a href="#">À Propos</a>
-    <a href="#">Services</a>
-    <a href="#">Événements</a>
-    <a href="#">Contact</a>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">CA<span>Genève</span></div>
+      <p class="footer-brand-desc">Communauté Albanaise Genève — Association à but non lucratif fondée dans la Commune de Vernier. Nous œuvrons pour l'intégration et la valorisation de la communauté albanophone de Genève et de Suisse romande.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigation</div>
+      <ul class="footer-links-list">
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#objectifs">Nos objectifs</a></li>
+        <li><a href="#partenaires">Partenaires</a></li>
+        <li><a href="#context">Communauté</a></li>
+        <li><a href="#evenements">Événements</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Partenaires</div>
+      <ul class="footer-links-list">
+        <li><a href="#">Ansambli Gëzuar</a></li>
+        <li><a href="http://www.lapsh.ch">LAPSh Genève</a></li>
+        <li><a href="#">Rinia Kontakt</a></li>
+        <li><a href="https://www.upa.ch">UPA — Univ. des Cultures</a></li>
+        <li><a href="#">AEAUG — UniGE</a></li>
+        <li><a href="https://weareillyrian.ch">We Are Illyrian</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Infos pratiques</div>
+      <ul class="footer-links-list">
+        <li><a href="#">Rue du Croix-du-Levant 14</a></li>
+        <li><a href="#">1220 Les Avanchets, GE</a></li>
+        <li><a href="tel:0799156551">079 915 65 51</a></li>
+        <li><a href="mailto:cageneve@gmail.com">cageneve@gmail.com</a></li>
+        <li><a href="http://www.cageneve.ch">www.cageneve.ch</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Communauté Albanaise Genève · Tous droits réservés</span>
+    <div class="footer-legal">
+      <a href="#">Mentions légales</a>
+      <a href="#">Protection des données</a>
+    </div>
   </div>
 </footer>
 
