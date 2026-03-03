@@ -52,10 +52,11 @@ Whether you're a startup needing your first server or an established company loo
 | | |
 |---|---|
 | 📧 **Email** | info@perkrahje.com |
-| 📞 **Phone** | [+49 155 6644 0167](https://wa.me/4915566440167) |
-| 📧 **Social Media** | [LinkedIn](https://www.linkedin.com/company/perkrahje)  [FaceBook](https://www.facebook.com/perkrahje) |
-| 🕐 **Hours** | Mon–Fri: 08:00 - 18:00 · Emergency: 24/7 |
+| 📞 **Phone** | +49 155 6644 0167 |
+| 🕐 **Hours** | Mon–Fri: 8AM – 6PM · Emergency: 24/7 |
 | 📍 **Location** | Serving businesses locally & remotely |
+| 📘 **Facebook** | [facebook.com/perkrahje](https://www.facebook.com/perkrahje) |
+| 💼 **LinkedIn** | [linkedin.com/company/perkrahje](https://www.linkedin.com/company/perkrahje/) |
 
 ---
 
