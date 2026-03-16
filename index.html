@@ -1,248 +1,1152 @@
-<!DOCTYPE html>
-<html lang="en">
+
+Action: file_editor create /app/perkrahje.html --file-text "<!DOCTYPE html>
+<html lang=\"en\">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PERKRAHJE.com – IT Support & Consulting</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <meta name=\"description\" content=\"PERKRAHJE - Fast, reliable IT support and strategic consulting for businesses of all sizes. Your trusted technology partner.\">
+    <title>PERKRAHJE.com - IT Support & Consulting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --emerald-50: #ecfdf5;
+            --emerald-100: #d1fae5;
+            --emerald-600: #059669;
+            --emerald-700: #047857;
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-900: #0f172a;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: var(--slate-900);
+            background-color: var(--slate-50);
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            background-color: transparent;
+        }
+
+        .header.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--slate-900);
+        }
+
+        .logo-accent {
+            color: var(--emerald-600);
+        }
+
+        .nav-desktop {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--slate-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .nav-link:hover {
+            color: var(--emerald-600);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--emerald-600);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--emerald-700);
+            transform: scale(1.05);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--slate-700);
+            border: 2px solid var(--slate-300);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--emerald-600);
+            color: var(--emerald-700);
+        }
+
+        .btn-lg {
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-top: 1px solid var(--slate-200);
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 8rem 1.5rem 5rem;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: blob 7s infinite;
+        }
+
+        .blob1 {
+            top: 0;
+            left: 25%;
+            width: 384px;
+            height: 384px;
+            background-color: var(--emerald-100);
+        }
+
+        .blob2 {
+            top: 0;
+            right: 25%;
+            width: 384px;
+            height: 384px;
+            background-color: #cffafe;
+            animation-delay: 2s;
+        }
+
+        .blob3 {
+            bottom: 0;
+            left: 50%;
+            width: 384px;
+            height: 384px;
+            background-color: #ccfbf1;
+            animation-delay: 4s;
+        }
+
+        @keyframes blob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--emerald-50);
+            border: 1px solid var(--emerald-600);
+            border-radius: 9999px;
+            margin-bottom: 2rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--emerald-700);
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--emerald-600);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, var(--emerald-600), #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--slate-600);
+            margin-bottom: 3rem;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .feature-pills {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .feature-pill {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .feature-pill:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 1.5rem;
+        }
+
+        .section-white {
+            background-color: var(--white);
+        }
+
+        .section-gray {
+            background-color: var(--slate-50);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-subtitle {
+            color: var(--emerald-600);
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.25rem;
+            color: var(--slate-600);
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 2px solid var(--slate-200);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: var(--emerald-600);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: var(--slate-600);
+            line-height: 1.7;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--slate-100);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-icon-wrapper {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--slate-600);
+            font-weight: 500;
+        }
+
+        /* Features List */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: var(--slate-50);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .feature-item:hover {
+            background-color: var(--emerald-50);
+            border-color: var(--emerald-600);
+            transform: scale(1.05);
+        }
+
+        .check-icon {
+            color: var(--emerald-600);
+            font-size: 1.75rem;
+            flex-shrink: 0;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--slate-100);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--slate-900);
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--slate-300);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--emerald-600);
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-info-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--slate-100);
+            transition: all 0.3s;
+        }
+
+        .contact-info-card:hover {
+            border-color: var(--emerald-600);
+        }
+
+        .contact-info-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-info-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .contact-info-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-link {
+            color: var(--emerald-600);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.125rem;
+        }
+
+        .contact-link:hover {
+            color: var(--emerald-700);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--slate-900);
+            color: var(--slate-300);
+            padding: 4rem 1.5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1280px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-title {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: var(--slate-400);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--slate-300);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--emerald-600);
+            color: var(--white);
+        }
+
+        .footer-list {
+            list-style: none;
+        }
+
+        .footer-list li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-link {
+            color: var(--slate-300);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-link:hover {
+            color: var(--emerald-600);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background-color: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--emerald-600);
+            z-index: 9999;
+            opacity: 0;
+            transform: translateX(400px);
+            transition: all 0.3s;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .toast.error {
+            border-left-color: #ef4444;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-desktop {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header class=\"header\" id=\"header\">
+        <div class=\"header-container\">
+            <h1 class=\"logo\">PERKRAHJE<span class=\"logo-accent\">.com</span></h1>
+            
+            <nav class=\"nav-desktop\">
+                <button class=\"nav-link\" onclick=\"scrollToSection('hero')\">Home</button>
+                <button class=\"nav-link\" onclick=\"scrollToSection('services')\">Services</button>
+                <button class=\"nav-link\" onclick=\"scrollToSection('about')\">About</button>
+                <button class=\"nav-link\" onclick=\"scrollToSection('contact')\">Contact</button>
+                <button class=\"btn btn-primary\" onclick=\"scrollToSection('contact')\">Get Started</button>
+            </nav>
 
-  <!-- NAV -->
-  <nav>
-    <div class="logo">PERKRAHJE<span>.com</span></div>
-    <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="#contact" class="nav-cta">Get Help</a>
-  </nav>
+            <button class=\"mobile-menu-btn\" onclick=\"toggleMobileMenu()\" aria-label=\"Toggle menu\">
+                <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\">
+                    <line x1=\"3\" y1=\"12\" x2=\"21\" y2=\"12\"></line>
+                    <line x1=\"3\" y1=\"6\" x2=\"21\" y2=\"6\"></line>
+                    <line x1=\"3\" y1=\"18\" x2=\"21\" y2=\"18\"></line>
+                </svg>
+            </button>
+        </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg-grid"></div>
-    <div class="hero-content">
-      <div class="badge">IT Support & Consulting</div>
-      <h1>Tech Problems?<br><span>We Fix That.</span></h1>
-      <p>Fast, reliable IT support and strategic consulting for businesses of all sizes. Your technology should work <em>for</em> you — not against you.</p>
-      <div class="hero-btns">
-        <a href="#contact" class="btn-primary">Get Started</a>
-        <a href="#services" class="btn-ghost">Our Services ↓</a>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="card-stack">
-        <div class="hcard c1">
-          <div class="hcard-icon">⚡</div>
-          <div>Fast Response</div>
-        </div>
-        <div class="hcard c2">
-          <div class="hcard-icon">🛡️</div>
-          <div>Secure Systems</div>
-        </div>
-        <div class="hcard c3">
-          <div class="hcard-icon">📊</div>
-          <div>Smart Consulting</div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <nav class=\"mobile-nav\" id=\"mobileNav\">
+            <button class=\"nav-link\" onclick=\"scrollToSection('hero')\">Home</button>
+            <button class=\"nav-link\" onclick=\"scrollToSection('services')\">Services</button>
+            <button class=\"nav-link\" onclick=\"scrollToSection('about')\">About</button>
+            <button class=\"nav-link\" onclick=\"scrollToSection('contact')\">Contact</button>
+            <button class=\"btn btn-primary\" onclick=\"scrollToSection('contact')\" style=\"width: 100%;\">Get Started</button>
+        </nav>
+    </header>
 
-  <!-- SERVICES -->
-  <section id="services" class="services">
-    <div class="section-label">What We Do</div>
-    <h2>Services Built for<br>Your Business</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="s-icon">🖥️</div>
-        <h3>IT Support</h3>
-        <p>Hardware, software, networks — we handle it all. On-site and remote support when you need it most.</p>
-      </div>
-      <div class="service-card featured">
-        <div class="s-icon">🔐</div>
-        <h3>Cybersecurity</h3>
-        <p>Protect your business from threats. Firewalls, antivirus, audits, and employee security training.</p>
-      </div>
-      <div class="service-card">
-        <div class="s-icon">☁️</div>
-        <h3>Cloud Solutions</h3>
-        <p>Move to the cloud or optimize your existing setup. Microsoft 365, Google Workspace, and more.</p>
-      </div>
-      <div class="service-card">
-        <div class="s-icon">📡</div>
-        <h3>Network Setup</h3>
-        <p>Wired or wireless, we design and install networks that are fast, stable, and secure.</p>
-      </div>
-      <div class="service-card">
-        <div class="s-icon">🧠</div>
-        <h3>IT Consulting</h3>
-        <p>Strategic technology advice to help your business grow smarter. Planning, budgeting, and roadmaps.</p>
-      </div>
-      <div class="service-card">
-        <div class="s-icon">🔧</div>
-        <h3>Maintenance</h3>
-        <p>Regular system maintenance and monitoring to catch issues before they become problems.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="about">
-    <div class="about-inner">
-      <div class="about-text">
-        <div class="section-label">About Us</div>
-        <h2>Your Local IT Partner</h2>
-        <p>At PERKRAHJE.com, we believe every business deserves enterprise-grade technology support — without the enterprise price tag. We're a dedicated team of IT professionals passionate about solving problems and empowering businesses to thrive through technology.</p>
-        <p>Whether you're a startup needing your first server or an established company looking to modernize, we bring the expertise and care to get you there.</p>
-        <div class="stats-row">
-          <div class="stat"><span>20+</span>Years Experience</div>
-          <div class="stat"><span>100+</span>Clients Served</div>
-          <div class="stat"><span>24/7</span>Support Available</div>
+    <!-- Hero Section -->
+    <section class=\"hero\" id=\"hero\">
+        <div class=\"hero-bg\">
+            <div class=\"blob blob1\"></div>
+            <div class=\"blob blob2\"></div>
+            <div class=\"blob blob3\"></div>
         </div>
-      </div>
-      <div class="about-visual">
-        <div class="about-box">
-          <div class="ab-item">✅ Remote & On-Site Support</div>
-          <div class="ab-item">✅ Quick Response Times</div>
-          <div class="ab-item">✅ Transparent Pricing</div>
-          <div class="ab-item">✅ No Jargon, Just Solutions</div>
-          <div class="ab-item">✅ Long-Term Relationships</div>
-          <div class="ab-item">✅ Certified Professionals</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="contact">
-    <div class="section-label">Get In Touch</div>
-    <h2>Let's Solve Your<br>IT Challenges</h2>
-    <div class="contact-wrap">
-      <form class="contact-form" action="https://formspree.io/f/xzdavnrg" method="POST">
-        <input type="hidden" name="_subject" value="New Contact from PERKRAHJE.com" />
-        <div class="form-row">
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Email Address" required />
-        </div>
-        <input type="text" name="company" placeholder="Company Name" />
-        <select name="service">
-          <option value="" disabled selected>Select a Service</option>
-          <option>IT Support</option>
-          <option>Cybersecurity</option>
-          <option>Cloud Solutions</option>
-          <option>Network Setup</option>
-          <option>IT Consulting</option>
-          <option>Maintenance</option>
-          <option>Other</option>
-        </select>
-        <textarea name="message" placeholder="Tell us about your issue or project..." rows="4" required></textarea>
-        <button type="submit" class="btn-primary">Send Message →</button>
-        <p class="form-note" id="form-msg"></p>
-      </form>
-      <div class="contact-info">
-        <div class="ci-card">
-          <div class="ci-icon">📧</div>
-          <div>
-            <strong>Email</strong>
-            <p>support@perkrahje.com</p>
-          </div>
-        </div>
-        <div class="ci-card">
-          <div class="ci-icon">📞</div>
-          <div>
-            <strong>Phone</strong>
-            <p>+49 155 6644 0167</p>
-          </div>
-        </div>
-        <div class="ci-card">
-          <div class="ci-icon">🕐</div>
-          <div>
-            <strong>Hours</strong>
-            <p>Mon–Fri: 8:00 – 18:00<br>Emergency: 24/7</p>
-          </div>
-        </div>
-        <div class="ci-card">
-          <div class="ci-icon">📍</div>
-          <div>
-            <strong>Location</strong>
-            <p>Serving businesses locally & remotely</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <div class=\"container text-center\">
+            <div class=\"badge\">
+                <span class=\"pulse-dot\"></span>
+                <span>IT Support & Consulting</span>
+            </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="logo">PERKRAHJE<span>.com</span></div>
-      <p>Professional IT Support & Consulting</p>
-      <div class="footer-links">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <p class="copyright">© 2025 PERKRAHJE.com – All rights reserved.</p>
-    </div>
-  </footer>
+            <h1 class=\"hero-title\">
+                Tech Problems? <span class=\"gradient-text\">We Fix That.</span>
+            </h1>
 
-  <script>
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
+            <p class=\"hero-description\">
+                Fast, reliable IT support and strategic consulting for businesses of all sizes. 
+                Your technology should work <strong>for you</strong> — not against you.
+            </p>
 
-    // Formspree AJAX submission
-    const form = document.querySelector('.contact-form');
-    const msg = document.getElementById('form-msg');
+            <div class=\"cta-buttons\">
+                <button class=\"btn btn-primary btn-lg\" onclick=\"scrollToSection('contact')\">
+                    Get Started →
+                </button>
+                <button class=\"btn btn-outline btn-lg\" onclick=\"scrollToSection('services')\">
+                    Our Services ↓
+                </button>
+            </div>
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const btn = form.querySelector('button[type="submit"]');
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
+            <div class=\"feature-pills\">
+                <div class=\"feature-pill\">
+                    <div class=\"feature-icon\" style=\"background-color: #fef3c7; color: #f59e0b;\">⚡</div>
+                    <span style=\"font-weight: 600;\">Fast Response</span>
+                </div>
+                <div class=\"feature-pill\">
+                    <div class=\"feature-icon\" style=\"background-color: #dbeafe; color: #3b82f6;\">🛡️</div>
+                    <span style=\"font-weight: 600;\">Secure Systems</span>
+                </div>
+                <div class=\"feature-pill\">
+                    <div class=\"feature-icon\" style=\"background-color: var(--emerald-50); color: var(--emerald-600);\">📊</div>
+                    <span style=\"font-weight: 600;\">Smart Consulting</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
+    <!-- Services Section -->
+    <section class=\"section section-white\" id=\"services\">
+        <div class=\"container\">
+            <div class=\"section-header\">
+                <h3 class=\"section-subtitle\">What We Do</h3>
+                <h2 class=\"section-title\">
+                    Services Built for <span class=\"gradient-text\">Your Business</span>
+                </h2>
+            </div>
+
+            <div class=\"services-grid\">
+                <div class=\"service-card\">
+                    <div class=\"service-icon\" style=\"background-color: var(--emerald-50); color: var(--emerald-600);\">💻</div>
+                    <h3 class=\"service-title\">IT Support</h3>
+                    <p class=\"service-description\">Hardware, software, networks — we handle it all. On-site and remote support when you need it most.</p>
+                </div>
+
+                <div class=\"service-card\">
+                    <div class=\"service-icon\" style=\"background-color: #fee2e2; color: #dc2626;\">🔒</div>
+                    <h3 class=\"service-title\">Cybersecurity</h3>
+                    <p class=\"service-description\">Protect your business from threats. Firewalls, antivirus, audits, and employee security training.</p>
+                </div>
+
+                <div class=\"service-card\">
+                    <div class=\"service-icon\" style=\"background-color: #e0f2fe; color: #0284c7;\">☁️</div>
+                    <h3 class=\"service-title\">Cloud Solutions</h3>
+                    <p class=\"service-description\">Move to the cloud or optimize your existing setup. Microsoft 365, Google Workspace, and more.</p>
+                </div>
+
+                <div class=\"service-card\">
+                    <div class=\"service-icon\" style=\"background-color: #ede9fe; color: #7c3aed;\">📡</div>
+                    <h3 class=\"service-title\">Network Setup</h3>
+                    <p class=\"service-description\">Wired or wireless, we design and install networks that are fast, stable, and secure.</p>
+                </div>
+
+                <div class=\"service-card\">
+                    <div class=\"service-icon\" style=\"background-color: #fef3c7; color: #f59e0b;\">🧠</div>
+                    <h3 class=\"service-title\">IT Consulting</h3>
+                    <p class=\"service-description\">Strategic technology advice to help your business grow smarter. Planning, budgeting, and roadmaps.</p>
+                </div>
+
+                <div class=\"service-card\">
+                    <div class=\"service-icon\" style=\"background-color: var(--slate-100); color: var(--slate-600);\">🔧</div>
+                    <h3 class=\"service-title\">Maintenance</h3>
+                    <p class=\"service-description\">Regular system maintenance and monitoring to catch issues before they become problems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class=\"section section-gray\" id=\"about\">
+        <div class=\"container\">
+            <div class=\"section-header\">
+                <h3 class=\"section-subtitle\">About Us</h3>
+                <h2 class=\"section-title\">Your Local IT Partner</h2>
+                <p class=\"section-description\">
+                    At <strong>PERKRAHJE.com</strong>, we believe every business deserves enterprise-grade 
+                    technology support — without the enterprise price tag. We're a dedicated team of IT professionals 
+                    passionate about solving problems and empowering businesses to thrive through technology.
+                </p>
+                <p class=\"section-description\" style=\"margin-top: 1rem;\">
+                    Whether you're a startup needing your first server or an established company looking to modernize, 
+                    we bring the expertise and care to get you there.
+                </p>
+            </div>
+
+            <div class=\"stats-grid\">
+                <div class=\"stat-card\">
+                    <div class=\"stat-icon-wrapper\" style=\"background-color: var(--emerald-100); color: var(--emerald-600);\">🏆</div>
+                    <div class=\"stat-value\">20+</div>
+                    <div class=\"stat-label\">Years Experience</div>
+                </div>
+
+                <div class=\"stat-card\">
+                    <div class=\"stat-icon-wrapper\" style=\"background-color: #dbeafe; color: #3b82f6;\">👥</div>
+                    <div class=\"stat-value\">100+</div>
+                    <div class=\"stat-label\">Clients Served</div>
+                </div>
+
+                <div class=\"stat-card\">
+                    <div class=\"stat-icon-wrapper\" style=\"background-color: #fef3c7; color: #f59e0b;\">⏰</div>
+                    <div class=\"stat-value\">24/7</div>
+                    <div class=\"stat-label\">Support Available</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class=\"section section-white\">
+        <div class=\"container\">
+            <div class=\"section-header\">
+                <h2 class=\"section-title\">
+                    Why Choose <span class=\"gradient-text\">PERKRAHJE</span>
+                </h2>
+                <p class=\"section-description\">
+                    We're not just another IT company. We're your technology partner committed to your success.
+                </p>
+            </div>
+
+            <div class=\"features-grid\">
+                <div class=\"feature-item\">
+                    <span class=\"check-icon\">✓</span>
+                    <span style=\"font-weight: 600; font-size: 1.125rem;\">Remote & On-Site Support</span>
+                </div>
+                <div class=\"feature-item\">
+                    <span class=\"check-icon\">✓</span>
+                    <span style=\"font-weight: 600; font-size: 1.125rem;\">Quick Response Times</span>
+                </div>
+                <div class=\"feature-item\">
+                    <span class=\"check-icon\">✓</span>
+                    <span style=\"font-weight: 600; font-size: 1.125rem;\">Transparent Pricing</span>
+                </div>
+                <div class=\"feature-item\">
+                    <span class=\"check-icon\">✓</span>
+                    <span style=\"font-weight: 600; font-size: 1.125rem;\">No Jargon, Just Solutions</span>
+                </div>
+                <div class=\"feature-item\">
+                    <span class=\"check-icon\">✓</span>
+                    <span style=\"font-weight: 600; font-size: 1.125rem;\">Long-Term Relationships</span>
+                </div>
+                <div class=\"feature-item\">
+                    <span class=\"check-icon\">✓</span>
+                    <span style=\"font-weight: 600; font-size: 1.125rem;\">Certified Professionals</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class=\"section section-gray\" id=\"contact\">
+        <div class=\"container\">
+            <div class=\"section-header\">
+                <h3 class=\"section-subtitle\">Get In Touch</h3>
+                <h2 class=\"section-title\">
+                    Let's Solve Your <span class=\"gradient-text\">IT Challenges</span>
+                </h2>
+            </div>
+
+            <div class=\"contact-grid\">
+                <!-- Contact Form -->
+                <div class=\"contact-form\">
+                    <form id=\"contactForm\" onsubmit=\"handleSubmit(event)\">
+                        <div class=\"form-group\">
+                            <label class=\"form-label\" for=\"name\">Full Name *</label>
+                            <input class=\"form-input\" type=\"text\" id=\"name\" name=\"name\" placeholder=\"John Doe\" required>
+                        </div>
+
+                        <div class=\"form-group\">
+                            <label class=\"form-label\" for=\"email\">Email Address *</label>
+                            <input class=\"form-input\" type=\"email\" id=\"email\" name=\"email\" placeholder=\"john@company.com\" required>
+                        </div>
+
+                        <div class=\"form-group\">
+                            <label class=\"form-label\" for=\"phone\">Phone Number</label>
+                            <input class=\"form-input\" type=\"tel\" id=\"phone\" name=\"phone\" placeholder=\"+49 123 456 7890\">
+                        </div>
+
+                        <div class=\"form-group\">
+                            <label class=\"form-label\" for=\"service\">Select a Service *</label>
+                            <select class=\"form-select\" id=\"service\" name=\"service\" required>
+                                <option value=\"\">Choose a service...</option>
+                                <option value=\"it-support\">IT Support</option>
+                                <option value=\"cybersecurity\">Cybersecurity</option>
+                                <option value=\"cloud-solutions\">Cloud Solutions</option>
+                                <option value=\"network-setup\">Network Setup</option>
+                                <option value=\"it-consulting\">IT Consulting</option>
+                                <option value=\"maintenance\">Maintenance</option>
+                                <option value=\"other\">Other</option>
+                            </select>
+                        </div>
+
+                        <div class=\"form-group\">
+                            <label class=\"form-label\" for=\"message\">Message *</label>
+                            <textarea class=\"form-textarea\" id=\"message\" name=\"message\" placeholder=\"Tell us about your IT needs...\" required></textarea>
+                        </div>
+
+                        <button type=\"submit\" class=\"btn btn-primary btn-lg\" style=\"width: 100%;\">
+                            Send Message →
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class=\"contact-info-list\">
+                    <div class=\"contact-info-card\">
+                        <div class=\"contact-info-header\">
+                            <div class=\"contact-info-icon\" style=\"background-color: var(--emerald-100); color: var(--emerald-600);\">✉️</div>
+                            <div>
+                                <h4 class=\"contact-info-title\">Email</h4>
+                                <a href=\"mailto:support@perkrahje.com\" class=\"contact-link\">support@perkrahje.com</a><br>
+                                <a href=\"mailto:valon@perkrahje.com\" class=\"contact-link\">valon@perkrahje.com</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=\"contact-info-card\">
+                        <div class=\"contact-info-header\">
+                            <div class=\"contact-info-icon\" style=\"background-color: #dbeafe; color: #3b82f6;\">📞</div>
+                            <div>
+                                <h4 class=\"contact-info-title\">Phone</h4>
+                                <a href=\"tel:+491556440167\" class=\"contact-link\">+49 155 6644 0167</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=\"contact-info-card\">
+                        <div class=\"contact-info-header\">
+                            <div class=\"contact-info-icon\" style=\"background-color: #fef3c7; color: #f59e0b;\">⏰</div>
+                            <div>
+                                <h4 class=\"contact-info-title\">Hours</h4>
+                                <p style=\"color: var(--slate-600); font-size: 1.125rem;\">Mon–Fri: 8:00 – 18:00<br>Emergency: 24/7</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=\"contact-info-card\">
+                        <div class=\"contact-info-header\">
+                            <div class=\"contact-info-icon\" style=\"background-color: #ede9fe; color: #7c3aed;\">📍</div>
+                            <div>
+                                <h4 class=\"contact-info-title\">Location</h4>
+                                <p style=\"color: var(--slate-600); font-size: 1.125rem;\">Serving businesses locally & remotely</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class=\"footer\">
+        <div class=\"footer-grid\">
+            <div>
+                <h3 class=\"footer-title\">PERKRAHJE<span class=\"logo-accent\">.com</span></h3>
+                <p class=\"footer-description\">
+                    Fast, reliable IT support and strategic consulting for businesses of all sizes. 
+                    Your trusted technology partner.
+                </p>
+                <div class=\"social-links\">
+                    <a href=\"mailto:support@perkrahje.com\" class=\"social-link\" aria-label=\"Email\">✉️</a>
+                    <a href=\"tel:+491556440167\" class=\"social-link\" aria-label=\"Phone\">📞</a>
+                    <a href=\"#\" class=\"social-link\" aria-label=\"LinkedIn\">in</a>
+                    <a href=\"#\" class=\"social-link\" aria-label=\"Twitter\">𝕏</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style=\"color: var(--white); font-weight: 700; font-size: 1.125rem; margin-bottom: 1rem;\">Quick Links</h4>
+                <ul class=\"footer-list\">
+                    <li><button class=\"footer-link\" onclick=\"scrollToSection('hero')\">Home</button></li>
+                    <li><button class=\"footer-link\" onclick=\"scrollToSection('services')\">Services</button></li>
+                    <li><button class=\"footer-link\" onclick=\"scrollToSection('about')\">About Us</button></li>
+                    <li><button class=\"footer-link\" onclick=\"scrollToSection('contact')\">Contact</button></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 style=\"color: var(--white); font-weight: 700; font-size: 1.125rem; margin-bottom: 1rem;\">Services</h4>
+                <ul class=\"footer-list\">
+                    <li><span class=\"footer-link\">IT Support</span></li>
+                    <li><span class=\"footer-link\">Cybersecurity</span></li>
+                    <li><span class=\"footer-link\">Cloud Solutions</span></li>
+                    <li><span class=\"footer-link\">IT Consulting</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class=\"footer-bottom\">
+            <p style=\"color: var(--slate-400); font-size: 0.875rem;\">
+                © <span id=\"year\"></span> PERKRAHJE.com. All rights reserved.
+            </p>
+            <div class=\"footer-legal\">
+                <a href=\"#\" class=\"footer-link\" style=\"font-size: 0.875rem;\">Privacy Policy</a>
+                <a href=\"#\" class=\"footer-link\" style=\"font-size: 0.875rem;\">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class=\"toast\" id=\"toast\"></div>
+
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
 
-        if (res.ok) {
-          msg.textContent = '✅ Message sent! We\'ll get back to you shortly.';
-          msg.style.color = '#00e5b0';
-          form.reset();
-        } else {
-          const data = await res.json();
-          msg.textContent = data.errors ? data.errors.map(e => e.message).join(', ') : '❌ Something went wrong. Please try again.';
-          msg.style.color = '#ff5c5c';
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
         }
-      } catch {
-        msg.textContent = '❌ Network error. Please try again later.';
-        msg.style.color = '#ff5c5c';
-      }
 
-      btn.textContent = 'Send Message →';
-      btn.disabled = false;
-    });
+        // Smooth scroll function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Close mobile menu if open
+                document.getElementById('mobileNav').classList.remove('active');
+            }
+        }
 
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(el => {
-        if (el.isIntersecting) el.target.classList.add('visible');
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.service-card, .ci-card, .stat, .ab-item').forEach(el => {
-      el.classList.add('reveal');
-      observer.observe(el);
-    });
-  </script>
+        // Toast notification
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            if (isError) {
+                toast.classList.add('error');
+            } else {
+                toast.classList.remove('error');
+            }
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // In a real application, you would send this data to your server
+            // For now, we'll just show a success message
+            console.log('Form submitted:', formData);
+            
+            showToast('Message sent successfully! We\'ll get back to you soon.');
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+        }
+    </script>
 </body>
 </html>
+"
+Observation: Create successful: /app/perkrahje.html
