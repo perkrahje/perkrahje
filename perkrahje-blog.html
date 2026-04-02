@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PERKRAHJE.com — Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,200;0,300;0,400;1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #f7f6f3;
+      --text: #111;
+      --subtle: #999;
+      --line: #ddd;
+      --card-bg: #fff;
+      --hover-bg: #f0efe9;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 58px;
+    }
+
+    .nav-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--subtle);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 140px 48px 72px;
+      border-bottom: 1px solid var(--line);
+      animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      opacity: 0;
+    }
+
+    .hero-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.63rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: var(--subtle);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 200;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      max-width: 640px;
+      margin-bottom: 20px;
+    }
+
+    .hero-sub {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--subtle);
+      max-width: 420px;
+      line-height: 1.7;
+    }
+
+    /* ── FILTERS ── */
+    .filters {
+      padding: 24px 48px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+      opacity: 0;
+    }
+
+    .filter-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--subtle);
+      background: none;
+      border: 1px solid var(--line);
+      padding: 5px 14px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      color: var(--text);
+      border-color: var(--text);
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    /* ── GRID ── */
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .post-card {
+      background: var(--card-bg);
+      padding: 36px 40px;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      opacity: 0;
+    }
+
+    .post-card:hover { background: var(--hover-bg); }
+
+    .post-card.hidden { display: none; }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .post-cat {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 300;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--subtle);
+    }
+
+    .post-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--line);
+      flex-shrink: 0;
+    }
+
+    .post-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--subtle);
+    }
+
+    .post-title {
+      font-size: 1.15rem;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+
+    .post-excerpt {
+      font-size: 0.83rem;
+      font-weight: 300;
+      color: var(--subtle);
+      line-height: 1.7;
+      flex-grow: 1;
+      margin-bottom: 28px;
+    }
+
+    .post-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .post-author {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--subtle);
+    }
+
+    .read-more {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+
+    .post-card:hover .read-more { gap: 10px; }
+
+    /* ── FEATURED (first card spans 2 cols) ── */
+    @media (min-width: 720px) {
+      .post-card:first-child {
+        grid-column: span 2;
+      }
+      .post-card:first-child .post-title {
+        font-size: 1.6rem;
+        max-width: 500px;
+      }
+      .post-card:first-child .post-excerpt {
+        max-width: 480px;
+      }
+    }
+
+    /* ── NEWSLETTER ── */
+    .newsletter {
+      padding: 72px 48px;
+      display: flex;
+      align-items: flex-start;
+      gap: 80px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+      opacity: 0;
+    }
+
+    .newsletter-text h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 200;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .newsletter-text p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--subtle);
+      line-height: 1.7;
+      max-width: 300px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0;
+      flex: 1;
+      min-width: 280px;
+      max-width: 420px;
+      align-self: flex-end;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      background: none;
+      border: 1px solid var(--line);
+      border-right: none;
+      padding: 12px 16px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .newsletter-form input::placeholder { color: var(--subtle); }
+    .newsletter-form input:focus { border-color: var(--text); }
+
+    .newsletter-form button {
+      background: var(--text);
+      color: var(--bg);
+      border: 1px solid var(--text);
+      padding: 12px 20px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .newsletter-form button:hover { opacity: 0.75; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--subtle);
+    }
+
+    footer a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--subtle);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--text); }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(247,246,243,0.92);
+      z-index: 200;
+      overflow-y: auto;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-overlay.open { display: block; }
+
+    .modal {
+      max-width: 680px;
+      margin: 80px auto 80px;
+      padding: 0 24px;
+      animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .modal-close {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      color: var(--subtle);
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover { color: var(--text); }
+
+    .modal-cat {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.63rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--subtle);
+      margin-bottom: 16px;
+    }
+
+    .modal-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 200;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .modal-meta {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--subtle);
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .modal-body {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: #333;
+    }
+
+    .modal-body p { margin-bottom: 20px; }
+
+    .modal-body h3 {
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin: 32px 0 12px;
+      color: var(--text);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 24px; }
+      .hero, .filters, .newsletter, footer { padding-left: 24px; padding-right: 24px; }
+      .post-card { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">PERKRAHJE.com</a>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#" class="active">Blog</a></li>
+      <li><a href="mailto:support@perkrahje.com">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">— Insights & Guides</div>
+    <h1 class="hero-title">Tech knowledge,<br><em style="font-style:italic;font-weight:200">plainly explained.</em></h1>
+    <p class="hero-sub">Practical IT advice, security tips, and technology insights for businesses navigating a digital world.</p>
+  </section>
+
+  <!-- FILTERS -->
+  <div class="filters">
+    <button class="filter-btn active" data-cat="all">All</button>
+    <button class="filter-btn" data-cat="cybersecurity">Cybersecurity</button>
+    <button class="filter-btn" data-cat="cloud">Cloud</button>
+    <button class="filter-btn" data-cat="support">IT Support</button>
+    <button class="filter-btn" data-cat="consulting">Consulting</button>
+    <button class="filter-btn" data-cat="network">Network</button>
+  </div>
+
+  <!-- POSTS -->
+  <main class="posts-grid" id="postsGrid"></main>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="newsletter-text">
+      <h2>Stay in the loop.</h2>
+      <p>Monthly insights on IT security, cloud trends, and technology strategies — no fluff, just signal.</p>
+    </div>
+    <div class="newsletter-form">
+      <input type="email" placeholder="your@email.com">
+      <button>Subscribe</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© PERKRAHJE.com</span>
+    <div style="display:flex;gap:24px;">
+      <a href="mailto:support@perkrahje.com">support@perkrahje.com</a>
+      <a href="tel:+491556440167">+49 155 6644 0167</a>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">← Back to blog</button>
+      <div class="modal-cat" id="modalCat"></div>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <div class="modal-meta" id="modalMeta"></div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    const posts = [
+      {
+        cat: "cybersecurity",
+        date: "Mar 28, 2025",
+        title: "Why 90% of Cyberattacks Start with a Simple Email",
+        excerpt: "Phishing remains the number one entry point for attackers. Here's how to train your team to spot the signs before it's too late.",
+        author: "Valon · Perkrahje",
+        readTime: "5 min read",
+        body: `
+          <p>Phishing attacks have become the leading vector for data breaches worldwide, and the reason is deceptively simple: they work. Attackers don't need to break through sophisticated firewalls when they can convince an employee to hand over their credentials voluntarily.</p>
+          <h3>What makes phishing so effective?</h3>
+          <p>Modern phishing emails are no longer the obviously misspelled messages of the early 2000s. Today's attacks are highly targeted — called "spear phishing" — and often reference real colleagues, ongoing projects, or internal systems. A message that appears to come from your CEO asking for an urgent wire transfer can fool even experienced professionals.</p>
+          <h3>The human firewall</h3>
+          <p>Your best defense isn't software — it's awareness. Regular training sessions that simulate real phishing attempts help employees build the reflex to pause and verify before clicking. We recommend quarterly simulated attacks combined with immediate, non-punitive feedback.</p>
+          <h3>Technical layers that help</h3>
+          <p>Beyond training, multi-factor authentication (MFA) ensures that even a stolen password isn't enough to gain access. Email filtering with DMARC, DKIM, and SPF records prevents spoofed domains from reaching inboxes in the first place. Together, these layers reduce your attack surface dramatically.</p>
+          <p>At Perkrahje, we offer both employee security training and technical email hardening as part of our Cybersecurity package. Reach out to learn how we can help protect your business.</p>
+        `
+      },
+      {
+        cat: "cloud",
+        date: "Mar 14, 2025",
+        title: "Microsoft 365 vs Google Workspace: Choosing the Right Fit for Your Team",
+        excerpt: "Both platforms are excellent — but the right choice depends on your workflow, existing tools, and long-term goals.",
+        author: "Valon · Perkrahje",
+        readTime: "7 min read",
+        body: `
+          <p>When businesses decide to move to cloud-based productivity tools, they almost always face the same question: Microsoft 365 or Google Workspace? Both are mature, capable platforms. The difference lies in the details of your specific situation.</p>
+          <h3>Microsoft 365 strengths</h3>
+          <p>If your team relies heavily on Excel for complex data work, or Word for document-heavy processes, Microsoft 365 is the clear choice. The desktop apps remain the gold standard for power users, and integration with Windows environments is seamless. Teams is also deeply embedded in enterprise workflows.</p>
+          <h3>Google Workspace strengths</h3>
+          <p>Google Workspace shines in real-time collaboration. Multiple people editing a document simultaneously, with full version history and comment threads, is still smoother in Google Docs than in Word Online. For remote-first teams who live in the browser, Workspace often feels more natural.</p>
+          <h3>Our recommendation</h3>
+          <p>For most small to medium businesses, the decision comes down to what your team already knows. Retraining has a real cost. That said, if you're starting fresh, Google Workspace tends to have a lower total cost of ownership and faster onboarding. If you're in a regulated industry or need advanced data governance, Microsoft 365's compliance tooling is unmatched.</p>
+          <p>We're certified in both platforms and can help you migrate, configure, and train your team — whichever direction you choose.</p>
+        `
+      },
+      {
+        cat: "support",
+        date: "Feb 27, 2025",
+        title: "Remote IT Support: What to Expect and How to Prepare",
+        excerpt: "Remote support has become the norm. Here's how to make sessions faster, smoother, and more effective from your end.",
+        author: "Valon · Perkrahje",
+        readTime: "4 min read",
+        body: `
+          <p>Remote IT support has transformed how businesses get help with technical issues. No waiting for a technician to arrive — problems can often be diagnosed and resolved within minutes. But a smooth session depends on preparation from both sides.</p>
+          <h3>Before the session</h3>
+          <p>Write down exactly what's happening — what you were doing when the issue appeared, any error messages you saw, and how long it's been occurring. Screenshots are incredibly helpful. The more specific you can be, the faster the diagnosis.</p>
+          <h3>Access and permissions</h3>
+          <p>Remote support requires you to grant temporary access to your machine. We use industry-standard, encrypted tools for this. Make sure you have admin credentials handy, as many fixes require elevated permissions. Never share your passwords — a legitimate technician will use secure session tools, not ask for your password directly.</p>
+          <h3>During the session</h3>
+          <p>Stay available. Remote sessions are most efficient when you can answer questions in real time. If you need to step away, let the technician know — some fixes require your input at key steps.</p>
+          <p>At Perkrahje, we offer same-day remote support for most issues, with response times under two hours on business days. Emergency support is available 24/7.</p>
+        `
+      },
+      {
+        cat: "consulting",
+        date: "Feb 10, 2025",
+        title: "Building an IT Roadmap for Your Small Business",
+        excerpt: "Technology decisions made without a plan are expensive. Here's a practical framework for thinking about your IT investments strategically.",
+        author: "Valon · Perkrahje",
+        readTime: "8 min read",
+        body: `
+          <p>Many small businesses treat IT as a series of reactive purchases — a new laptop when the old one breaks, a new software subscription when a problem appears. This approach is costly and leaves gaps in your infrastructure. A simple IT roadmap changes that.</p>
+          <h3>Start with an audit</h3>
+          <p>Before planning forward, understand where you are. Document every piece of hardware, software, and subscription your business uses. Note the age of devices, license expiry dates, and any systems that are currently causing friction. This inventory becomes the foundation of your roadmap.</p>
+          <h3>Align IT with business goals</h3>
+          <p>Your technology should serve your business objectives. If you're planning to hire 10 people in the next year, your network and licensing need to scale with that. If you're moving toward remote work, cloud infrastructure becomes a priority. Every IT investment should connect to a business outcome.</p>
+          <h3>Budget in cycles</h3>
+          <p>Hardware has a predictable lifespan — typically 3–5 years for laptops, 5–7 for servers. Build replacement cycles into your annual budget rather than being surprised by failures. A small monthly IT reserve prevents large emergency expenditures.</p>
+          <p>Our IT Consulting service includes a full technology audit and a 12-month roadmap tailored to your business. Contact us to schedule an initial consultation.</p>
+        `
+      },
+      {
+        cat: "network",
+        date: "Jan 22, 2025",
+        title: "Wi-Fi Dead Zones: Why They Happen and How to Eliminate Them",
+        excerpt: "Slow or patchy wireless connectivity kills productivity. The fix is usually simpler than you think — but rarely just 'a better router'.",
+        author: "Valon · Perkrahje",
+        readTime: "5 min read",
+        body: `
+          <p>Dead zones are one of the most common complaints we hear from businesses. The conference room has no signal. The warehouse floor drops calls. The back office loads pages at a crawl. These problems have specific causes — and specific solutions.</p>
+          <h3>Why dead zones happen</h3>
+          <p>Wi-Fi signals weaken as they travel through walls, floors, and interference from other devices. A single router placed in one corner of an office simply cannot serve a large or complex space consistently. Building materials matter too — concrete and metal are particularly hostile to wireless signals.</p>
+          <h3>The mesh solution</h3>
+          <p>For most business environments, a mesh network system is the answer. Unlike traditional range extenders that create separate networks and hand-off issues, mesh systems create a single unified network with multiple access points that communicate intelligently. Devices roam seamlessly as you move through the space.</p>
+          <h3>Wired backhaul</h3>
+          <p>For maximum performance, we always recommend connecting mesh nodes via ethernet cable where possible. Wireless backhaul — nodes communicating wirelessly with each other — works but introduces latency and bandwidth loss. A well-planned cable run pays dividends for years.</p>
+          <p>Perkrahje designs and installs business-grade network infrastructure built to last. We survey your space, plan coverage, and handle the full installation. Get in touch for a free site assessment.</p>
+        `
+      },
+      {
+        cat: "cybersecurity",
+        date: "Jan 8, 2025",
+        title: "The Case for Multi-Factor Authentication — And Why Passwords Alone Aren't Enough",
+        excerpt: "Passwords are compromised every day. MFA is the single most effective step most businesses haven't fully implemented yet.",
+        author: "Valon · Perkrahje",
+        readTime: "4 min read",
+        body: `
+          <p>If you only implement one security measure this year, make it multi-factor authentication. Study after study shows that MFA blocks over 99% of automated credential attacks. Yet adoption among small and medium businesses remains surprisingly low.</p>
+          <h3>The problem with passwords</h3>
+          <p>Passwords are leaked constantly. Massive data breaches at large platforms expose billions of credentials, which attackers then test against business accounts in a technique called credential stuffing. If your employee reused their personal password for a corporate account, you're at risk — even if your own systems were never breached.</p>
+          <h3>How MFA helps</h3>
+          <p>Multi-factor authentication requires a second form of verification — typically a code from an app like Microsoft Authenticator or Google Authenticator — in addition to a password. Even if an attacker has the correct password, they cannot proceed without the second factor, which lives on the employee's physical device.</p>
+          <h3>Implementation considerations</h3>
+          <p>MFA rollout requires planning. Not all systems support it natively. Some employees find it disruptive at first. We recommend a phased rollout starting with email and VPN — the two highest-risk access points — followed by all other business applications. With the right configuration, MFA adds only a few seconds to the login experience.</p>
+          <p>Perkrahje handles full MFA deployment and employee onboarding as part of our Cybersecurity package.</p>
+        `
+      }
+    ];
+
+    const grid = document.getElementById('postsGrid');
+    const overlay = document.getElementById('modalOverlay');
+    const modalClose = document.getElementById('modalClose');
+
+    posts.forEach((post, i) => {
+      const card = document.createElement('div');
+      card.className = 'post-card';
+      card.dataset.cat = post.cat;
+      card.style.animationDelay = `${0.15 + i * 0.07}s`;
+      card.innerHTML = `
+        <div class="post-meta">
+          <span class="post-cat">${post.cat}</span>
+          <div class="post-dot"></div>
+          <span class="post-date">${post.date}</span>
+          <div class="post-dot"></div>
+          <span class="post-date">${post.readTime}</span>
+        </div>
+        <div class="post-title">${post.title}</div>
+        <div class="post-excerpt">${post.excerpt}</div>
+        <div class="post-footer">
+          <span class="post-author">${post.author}</span>
+          <span class="read-more">Read →</span>
+        </div>
+      `;
+      card.addEventListener('click', () => openModal(post));
+      grid.appendChild(card);
+    });
+
+    // Filters
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.dataset.cat;
+        document.querySelectorAll('.post-card').forEach(card => {
+          card.classList.toggle('hidden', cat !== 'all' && card.dataset.cat !== cat);
+        });
+      });
+    });
+
+    // Modal
+    function openModal(post) {
+      document.getElementById('modalCat').textContent = post.cat;
+      document.getElementById('modalTitle').textContent = post.title;
+      document.getElementById('modalMeta').textContent = `${post.author} · ${post.date} · ${post.readTime}`;
+      document.getElementById('modalBody').innerHTML = post.body;
+      overlay.classList.add('open');
+      overlay.scrollTop = 0;
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  </script>
+</body>
+</html>
