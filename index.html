@@ -37,15 +37,6 @@
       animation: appear 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
     }
 
-    .tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      font-weight: 300;
-      letter-spacing: 0.18em;
-      color: var(--subtle);
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
 
     .name {
       font-size: clamp(2rem, 5vw, 3.2rem);
@@ -56,14 +47,6 @@
       margin-bottom: 14px;
     }
 
-    .tagline {
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: var(--subtle);
-      letter-spacing: 0.01em;
-      margin-bottom: 28px;
-      line-height: 1.5;
-    }
 
     .rule {
       width: 100%;
@@ -93,10 +76,6 @@
       flex-shrink: 0;
     }
 
-    .dot.hollow {
-      background: transparent;
-      border: 1px solid var(--subtle);
-    }
 
     .info-row a,
     .info-row span {
@@ -119,37 +98,6 @@
       border-color: var(--text);
     }
 
-    .services {
-      margin-top: 28px;
-      width: 100%;
-    }
-
-    .services-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.6rem;
-      font-weight: 300;
-      letter-spacing: 0.18em;
-      color: var(--subtle);
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .services-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .service-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      font-weight: 300;
-      letter-spacing: 0.06em;
-      color: var(--subtle);
-      border: 1px solid var(--line);
-      padding: 4px 10px;
-      border-radius: 2px;
-    }
 
     @keyframes appear {
       to { opacity: 1; transform: translateY(0); }
@@ -158,36 +106,14 @@
 </head>
 <body>
   <div class="wrapper">
-    <div class="tag">— IT Support & Consulting</div>
-    <div class="name">PERKRAHJE</div>
-    <div class="tagline">Fast, reliable IT support and strategic<br>consulting for businesses of all sizes.</div>
+    <div class="name">perkrahje.com</div>
 
     <div class="rule"></div>
 
     <div class="info-block">
       <div class="info-row">
         <div class="dot"></div>
-        <a href="mailto:support@perkrahje.com">support@perkrahje.com</a>
-      </div>
-      <div class="info-row">
-        <div class="dot hollow"></div>
-        <a href="tel:+491556440167">+49 155 6644 0167</a>
-      </div>
-      <div class="info-row">
-        <div class="dot hollow"></div>
-        <span>Mon–Fri 8:00–18:00 · Emergency 24/7</span>
-      </div>
-    </div>
-
-    <div class="services">
-      <div class="services-label">Services</div>
-      <div class="services-list">
-        <span class="service-tag">IT Support</span>
-        <span class="service-tag">Cybersecurity</span>
-        <span class="service-tag">Cloud Solutions</span>
-        <span class="service-tag">Network Setup</span>
-        <span class="service-tag">IT Consulting</span>
-        <span class="service-tag">Maintenance</span>
+        <a href="mailto:valon@perkrahje.com">valon@perkrahje.com</a>
       </div>
     </div>
   </div>
